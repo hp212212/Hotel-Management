@@ -1,8 +1,11 @@
 import React from 'react'
 import { Table } from 'antd';
+import { useSelector } from 'react-redux';
 import '../Css/TableDisplay.css'
 
-export default function TableDisplay() {
+export default function TableDisplay(Props) {
+    let kaka = Props.id
+    const state = useSelector((state) => state.MainReduser)
     const columns = [
         {
             title: 'Date',
@@ -39,7 +42,7 @@ export default function TableDisplay() {
     }
     return (
         <>
-            <Table columns={columns} dataSource={data} size="small"/>
+            <Table columns={columns} dataSource={data} size="small" />
         </>
     )
 }

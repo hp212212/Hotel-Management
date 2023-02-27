@@ -34,7 +34,7 @@ export default function Home() {
                                             if (now === res.checkin && "Reservation" === res.status) {
                                                 return (
                                                     <div className="MiddleItemsdesign">
-                                                        <Nav.Link as={NavLink} to={`${location.pathname}/ReservationInhouse/${fname}`} className="my-1 ps-1 reservationsitems" href='#'>{res.fname}</Nav.Link>
+                                                        <Nav.Link as={NavLink} to={`${location.pathname}/ReservationInhouse/${res.id}`} className="my-1 ps-1 reservationsitems" href='#'>{res.fname}</Nav.Link>
                                                     </div>
                                                 )
 
@@ -54,7 +54,7 @@ export default function Home() {
                                             if (now === res.checkout && "In House" === res.status) {
                                                 return (
                                                     <div className="MiddleItemsdesign">
-                                                        <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${res.fname}`} className="my-1 ps-1 reservationsitems" href='#'>{res.fname}</Nav.Link>
+                                                        <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${res.id}`} className="my-1 ps-1 reservationsitems" href='#'>{res.fname}</Nav.Link>
                                                     </div>
                                                 )
 
@@ -86,13 +86,13 @@ export default function Home() {
                                 {
                                     // eslint-disable-next-line array-callback-return
                                     List.map((res, index) => {
-                                        const { fname, roomno, staydays, roomtype, checkout, checkin } = res;
+                                        const { fname, roomno, staydays, roomtype, checkout, checkin,id } = res;
                                         // eslint-disable-next-line no-lone-blocks
                                         {
                                             if (now >= checkin && now <= checkout && "In House" === res.status) {
                                                 return (
                                                     <div className="MiddleItemsdesign" >
-                                                        <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${fname}`} className="MiddleItems" title={fname}>
+                                                        <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${id}`} className="MiddleItems" title={fname}>
                                                             <div className="MiddleItems1">
                                                                 <BsFillPersonCheckFill className="MiddleItems11" title={`In House`} />
                                                                 <div className="MiddleItems12" key={roomno} title={`${roomno}`}>

@@ -27,8 +27,8 @@ function App() {
             <Route path="/Extra" element={<Extra />} />
             <Route exact path="/Home/Walkin" element={<Walkin />} />
             <Route exact path="/Home/Reservation" element={<Reservation />} />
-            <Route exact path="/Home/Inhouse/:fname" element={<Inhouse />} />
-            <Route exact path="/Home/ReservationInhouse/:fname" element={<ReservationInhouse />} />
+            <Route exact path="/Home/Inhouse/:id" element={<Inhouse />} />
+            <Route exact path="/Home/ReservationInhouse/:id" element={<ReservationInhouse />} />
           </Routes>
         </Suspense>
       </Provider>

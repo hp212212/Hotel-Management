@@ -18,9 +18,9 @@ export default function ReservationInhouse() {
     const dispatch = useDispatch()
     const kaka = useSelector((state) => state.MainReduser)
     let kakaid = {}
-    const { fname } = useParams()
+    const { id } = useParams()
     for (let i = 0; i < kaka.length; i++) {
-        if (fname === kaka[i].fname) {
+        if (Number(id) === kaka[i].id) {
             kakaid = kaka[i]
             break
         }
