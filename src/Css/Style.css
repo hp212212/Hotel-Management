@@ -1,0 +1,312 @@
+body {
+    min-width: 600px;
+    min-height: 450px;
+}
+
+.side {
+    height: 90vh;
+    background-color: rgb(222, 230, 187);
+    border: solid 3px #89a850;
+    /* min-width: 100px; */
+}
+
+.navlink:hover {
+    background-color: rgb(167, 141, 190);
+    border-radius: 3px;
+}
+
+.reservations {
+    background-color: #89a850;
+}
+
+.reservationsitems {
+    display: inline-block;
+    background-color: bisque;
+    border-radius: 4px;
+    color: blueviolet;
+    border: solid 1px bisque;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-height: 25px;
+}
+
+.reservationsitems:hover {
+    border: solid 2px bisque;
+    background-color: #89a850;
+    color: bisque;
+}
+
+.reservationheading {
+    background-color: rgb(222, 230, 187);
+    text-align: center;
+    color: rgb(220, 0, 240);
+}
+
+.reservationheight {
+    max-height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+}
+
+/* .reservationheight:hover{
+overflow-y: scroll;
+} */
+
+.RightMenu {
+    text-align: center;
+    height: 8%;
+    min-height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: larger;
+    font-weight: bold;
+    word-wrap: break-word;
+    margin-top: 5px;
+    border: solid 2px #8d31da;
+    color: #8d31da;
+}
+
+.RightMenu:hover {
+    background-color: #8d31da;
+    color: whitesmoke;
+}
+
+/* #RightMenu1 {
+    border: solid 2px #ca3838;
+    color: #ca3838;
+}
+
+#RightMenu1:hover {
+    background-color: #ca3838;
+    color: whitesmoke;
+}
+
+#RightMenu2 {
+    border: solid 2px #00ffaa;
+    color: #00ffaa;
+}
+
+#RightMenu2:hover {
+    background-color: #00ffaa;
+    color: whitesmoke;
+}
+
+#RightMenu3 {
+    border: solid 2px #0059fd;
+    color: #0059fd;
+}
+
+#RightMenu3:hover {
+    background-color: #0059fd;
+    color: whitesmoke;
+}
+
+#RightMenu4 {
+    border: solid 2px #ff00ff;
+    color: #ff00ff;
+}
+
+#RightMenu4:hover {
+    background-color: #ff00ff;
+    color: whitesmoke;
+}
+
+#RightMenu5 {
+    border: solid 2px #8d31da;
+    color: #8d31da;
+}
+
+#RightMenu5:hover {
+    background-color: #8d31da;
+    color: whitesmoke;
+}
+
+#RightMenu6 {
+    border: solid 2px #ff6347;
+    color: #ff6347;
+}
+
+#RightMenu6:hover {
+    background-color: #ff6347;
+    color: whitesmoke;
+} */
+
+.MiddlePart {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: flex-start;
+    margin-top: 6vh;
+}
+
+.MiddleItems {
+    width: 190px;
+    height: 150px;
+    border: solid tomato 2px;
+    border-radius: 3px;
+}
+
+.MiddleItems1 {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    height: 20%;
+    align-items: center;
+    background-color: blueviolet;
+
+}
+
+.MiddleItems11 {
+    height: 100%;
+    width: 15%;
+    margin-left: 2%;
+    color: white;
+}
+
+.MiddleItems12 {
+    height: 100%;
+    width: 18%;
+    margin-left: 3%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.MiddleItems13 {
+    height: 100%;
+    width: 65%;
+    margin-left: 3%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+}
+
+.MiddleItems2 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 80% !important;
+    /* align-items: center; */
+    margin: 0px;
+    flex-direction: column;
+    background-color: rgb(243, 238, 189);
+}
+
+.MiddleItems21 {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    padding: 0px 3px;
+    justify-content: space-between;
+    color: tomato;
+    font-weight: bold;
+}
+
+.MiddleItems22 {
+    height: 70%;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    justify-content: center;
+}
+
+.MiddleItems23 {
+    height: 15%;
+    display: flex;
+    align-items: center;
+    padding-right: 3px;
+    justify-content: flex-end;
+}
+
+.site-input-group-wrapper .site-input-split {
+    background-color: #fff !important;
+}
+
+.site-input-group-wrapper .site-input-right {
+    border-left-width: 0;
+}
+
+.site-input-group-wrapper .site-input-right:hover,
+.site-input-group-wrapper .site-input-right:focus {
+    border-left-width: 1px;
+}
+
+.site-input-group-wrapper .ant-input-rtl.site-input-right {
+    border-right-width: 0;
+}
+
+.site-input-group-wrapper .ant-input-rtl.site-input-right:hover,
+.site-input-group-wrapper .ant-input-rtl.site-input-right:focus {
+    border-right-width: 1px;
+}
+
+#number::-webkit-outer-spin-button,
+#number::-webkit-inner-spin-button,
+#TotalAdults::-webkit-outer-spin-button,
+#TotalAdults::-webkit-inner-spin-button,
+#TotalChild::-webkit-outer-spin-button,
+#TotalChild::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.underNabBar {
+    max-height: 90vh;
+    padding: 0px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    position: relative;
+}
+
+.underNabBaricons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(224, 224, 119);
+    padding-left: 10px;
+    position: fixed;
+    width: 100%;
+}
+
+.underNabBariconsItems {
+    margin: 5px 15px;
+    font-size: 25px;
+    transition: all 0.2s linear;
+}
+
+.underNabBariconsItems:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.20);
+    color: #dd377c;
+}
+
+.MiddleItemsdesign {
+    /* padding-bottom: 50px; */
+    transition: all 0.2s linear;
+    margin: 5px;
+    position: relative;
+}
+
+.MiddleItemsdesign:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.05);
+    /* opacity: 0.5; */
+}
+
+/* .MiddleItemsdesign:hover {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.05);
+    opacity: 0.5; */
+/* transform: rotateZ(6deg); */
+/* transform: rotate3d(1, 1, 1, 45deg); */
+/* } */

@@ -1,0 +1,31 @@
+.iinput {
+    border: none;
+    border-bottom: solid 1px #ffc107;
+    border-radius: 0;
+}
+
+.iinput:hover {
+    border-bottom: solid 1px green;
+    border-radius: 0;
+}
+
+.Fecility {
+    height: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: auto;
+}
+.SubmitButton{
+    background-color: var(--mainWhite);
+    /* line-height: 1.5rem; */
+    /* padding: 10px 20px; */
+    /* margin-bottom: 1rem; */
+    border: 1px solid yellow;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    transition: all 0.2s linear;
+}
+.SubmitButton:hover{
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    transform: scale(1.05);
+}
