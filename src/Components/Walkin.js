@@ -66,6 +66,21 @@ export default function Walkin() {
     useEffect(() => {
         setTotalPerson(Number(Adults) + Number(Child))
     }, [Adults, Child])
+    const AddPayment = () => {
+        if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
+            alert("please Add valid Paymint.")
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        } else {
+            // setPaymentData({ ...PaymentData, "date": now })
+            PaymentData["date"] = now
+            setPaidAmount((Number(PaidAmount) + Number(PaymentData.amount)).toFixed(2))
+            Data.account.push(PaymentData)
+            setPaymentData({})
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        }
+    }
     const FinalSubmit = (event) => {
         event.preventDefault()
         if (TotalPerson === 0) {
@@ -242,31 +257,55 @@ export default function Walkin() {
                         <Col xs={12} className="text-center">
                             <h3>Account Section</h3>
                         </Col>
-                        <Col xs={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Total Amount</InputGroup.Text>
                                 <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <Col xs={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Paid Amount</InputGroup.Text>
                                 <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <Col xs={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Due Amount</InputGroup.Text>
                                 <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <div className='bg-success pt-3'>
+                        <Col xs={12} className='bg-success pt-3'>
 
-                            {/* <TableDisplay id={id} /> */}
-                        </div>
+                            {
+                                Data.account.length > 0 ? <TableDisplay res={Data.account} /> : null
+                            }
+                        </Col>
+                        <Col lg={6} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Payment Method</InputGroup.Text>
+                                <Form.Select id="SelectPaymentMethod" aria-label="Default select example" onChange={(event) => { setPaymentData({ ...PaymentData, "paymentmethod": event.target.value }) }}  >
+                                    <option value="none"></option>
+                                    <option value="Master Card">Master Card</option>
+                                    <option value="Visa Card">Visa Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Cash">Cash</option>
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Amount</InputGroup.Text>
+                                <Form.Control type="number" id="PaymentAmount" onChange={(event) => { setPaymentData({ ...PaymentData, "amount": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={2} className="mt-2">
+                            <Button type="button" onClick={AddPayment} className="w-100" variant="outline-success">Add</Button>
+                        </Col>
 
                     </Row>
 

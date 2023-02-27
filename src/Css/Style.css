@@ -268,7 +268,9 @@ overflow-y: scroll;
 #TotalAdults::-webkit-outer-spin-button,
 #TotalAdults::-webkit-inner-spin-button,
 #TotalChild::-webkit-outer-spin-button,
-#TotalChild::-webkit-inner-spin-button {
+#TotalChild::-webkit-inner-spin-button,
+#PaymentAmount::-webkit-outer-spin-button,
+#PaymentAmount::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -289,6 +291,7 @@ overflow-y: scroll;
     padding-left: 10px;
     position: fixed;
     width: 100%;
+    z-index: 100;
 }
 
 .underNabBariconsItems {
