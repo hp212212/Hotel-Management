@@ -22,7 +22,7 @@ export default function Inhouse() {
     let kakaid = {}
     const { id } = useParams()
     for (let i = 0; i < kaka.length; i++) {
-        console.log(id)
+        // console.log(id)
         if (Number(id) === kaka[i].id) {
             kakaid = kaka[i]
             break
@@ -270,7 +270,7 @@ export default function Inhouse() {
                             </InputGroup>
                         </Col>
 
-                        <TableDisplay res={id}/>
+                        <TableDisplay id={id}/>
 
                     </Row>
 
