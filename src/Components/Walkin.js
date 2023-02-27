@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
 import { PostDispatch } from '../Redux Folder/Dispatch';
+import TableDisplay from './TableDisplay';
 // import moment from 'moment';
 
 export default function Walkin() {
@@ -227,6 +228,38 @@ export default function Walkin() {
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
+                    </Row>
+
+                    <Row className="border border-2 border-warning rounded-1 mt-2">
+                        <Col xs={12} className="text-center">
+                            <h3>Account Section</h3>
+                        </Col>
+                        <Col xs={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Total Charge</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col xs={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Paid Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-success text-white">{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col xs={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Due Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-danger text-white">{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+
+                        <TableDisplay />
+
+
+
                     </Row>
 
 

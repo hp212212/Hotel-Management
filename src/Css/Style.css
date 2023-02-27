@@ -142,6 +142,10 @@ overflow-y: scroll;
     align-items: flex-start;
     margin-top: 6vh;
 }
+.Facility{
+    max-height: 5px;
+    /* overflow-x: hidden; */
+}
 
 .MiddleItems {
     width: 190px;
@@ -218,6 +222,15 @@ overflow-y: scroll;
     align-items: center;
     padding: 3px;
     justify-content: center;
+}
+.FamilyIcon{
+    /* size: 50px; */
+    font-size: 46px;
+    padding: 5px;
+    color: #f3eebd;
+    border: solid black 1px;
+    border-radius: 100%;
+    background-color: #8a2be2;
 }
 
 .MiddleItems23 {

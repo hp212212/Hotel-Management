@@ -5,6 +5,7 @@ import { BsFillPersonCheckFill } from 'react-icons/bs';
 import { TbDoorExit } from 'react-icons/tb';
 import { ImEnter } from 'react-icons/im';
 import { RiReservedFill } from 'react-icons/ri';
+import { MdOutlineFamilyRestroom } from 'react-icons/md';
 
 import { FaChrome } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
@@ -106,7 +107,7 @@ export default function Home() {
                                                                     <div key={staydays} title={`${staydays} Days To Go`}>{staydays} Days</div>
                                                                     <div key={roomtype} title={`Room Type`}>{roomtype}</div>
                                                                 </div>
-                                                                <div className="MiddleItems22">
+                                                                <div className="MiddleItems22"><MdOutlineFamilyRestroom className="FamilyIcon"/>
                                                                 </div>
                                                                 <div className="MiddleItems23"  >
                                                                     <TbDoorExit key={checkout} style={{ color: "red" }} className="me-1" title={`Check Out Date`} />

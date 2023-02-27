@@ -3,7 +3,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "1 Hitesh V Patel",
@@ -20,7 +20,7 @@
     {
       "roomtype": "SNQ3",
       "status": "Check Out",
-      "roomfecility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "227",
       "rate": 145,
       "fname": "2 Japak Patel",
@@ -37,7 +37,7 @@
     {
       "roomtype": "S11",
       "status": "Check Out",
-      "roomfecility": "2 Queen and 1 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen and 1 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "216",
       "rate": 145,
       "fname": "3 Sweta",
@@ -54,7 +54,7 @@
     {
       "roomtype": "NK1",
       "status": "In House",
-      "roomfecility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "103",
       "rate": "120",
       "fname": "4 Mayur",
@@ -71,7 +71,7 @@
     {
       "roomtype": "NDD1",
       "status": "Check Out",
-      "roomfecility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "126",
       "rate": 125,
       "fname": "5 Divyesh",
@@ -88,7 +88,7 @@
     {
       "roomtype": "SNQ3",
       "status": "In House",
-      "roomfecility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "227",
       "rate": 145,
       "fname": "6 Bhavesh",
@@ -105,7 +105,7 @@
     {
       "roomtype": "NQQ1",
       "status": "Check Out",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "7 Hitesh 10-15",
@@ -122,7 +122,7 @@
     {
       "roomtype": "NQQ1",
       "status": "Check Out",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "8 Hitesh 11-19",
@@ -138,8 +138,8 @@
     },
     {
       "roomtype": "NQQ1",
-      "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "status": "Check Out",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "9 Hitesh 10-27",
@@ -156,7 +156,7 @@
     {
       "roomtype": "NQQ1",
       "status": "Check Out",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "10 Hitesh 20-22",
@@ -173,7 +173,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "11 Hitesh 22-25",
@@ -190,7 +190,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "12 Hitesh 22-26",
@@ -207,7 +207,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "129",
       "rate": "220",
       "fname": "13 Hitesh 25-28",
@@ -224,7 +224,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "108",
       "rate": "108",
       "fname": "14 Hitesh 10-15",
@@ -241,7 +241,7 @@
     {
       "roomtype": "NQQ1",
       "status": "In House",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "15 Hitesh 10-15",
@@ -258,7 +258,7 @@
     {
       "roomtype": "NQQ1",
       "status": "Check Out",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "16 Hitesh Year 1",
@@ -275,7 +275,7 @@
     {
       "roomtype": "NQQ1",
       "status": "Reservation",
-      "roomfecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "125",
       "rate": "200",
       "fname": "17 Hitesh Year 1",
@@ -292,7 +292,7 @@
     {
       "roomtype": "S13",
       "status": "In House",
-      "roomfecility": "3 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "3 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "223",
       "rate": "200",
       "fname": "18 Dada",
@@ -309,7 +309,7 @@
     {
       "roomtype": "S12",
       "status": "In House",
-      "roomfecility": "2 Double and 1 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Double and 1 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "226",
       "rate": "250",
       "fname": "19 Ketan Patel",
@@ -326,7 +326,7 @@
     {
       "roomtype": "NK1",
       "status": "In House",
-      "roomfecility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "103",
       "rate": "120",
       "fname": "20 Suchi Patel",
@@ -343,7 +343,7 @@
     {
       "roomtype": "SNQ3",
       "status": "In House",
-      "roomfecility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "227",
       "rate": "200",
       "fname": "21 Gaurang Patel",
@@ -360,7 +360,7 @@
     {
       "roomtype": "NK1",
       "status": "In House",
-      "roomfecility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "120",
       "rate": "150",
       "fname": "22 Mayank Patel",
@@ -377,7 +377,7 @@
     {
       "status": "In House",
       "roomtype": "NK1",
-      "roomfecility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "120",
       "rate": "100",
       "fname": "Maulikbhai",
@@ -394,7 +394,7 @@
     {
       "status": "Reservation",
       "roomtype": "SNQ3",
-      "roomfecility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "227",
       "rate": 145,
       "fname": "fdvhsfddf",
@@ -414,7 +414,7 @@
     {
       "type": "NQ1",
       "rate": 90,
-      "fecility": "1 Queen Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "1 Queen Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "100",
         "101",
@@ -431,7 +431,7 @@
     {
       "type": "NQQ1",
       "rate": 100,
-      "fecility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "108",
         "125",
@@ -444,7 +444,7 @@
     {
       "type": "NQQ2",
       "rate": 125,
-      "fecility": "2 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "121",
         "122"
@@ -454,7 +454,7 @@
     {
       "type": "NDD1",
       "rate": 125,
-      "fecility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "102",
         "110",
@@ -467,7 +467,7 @@
     {
       "type": "NDD2",
       "rate": 135,
-      "fecility": "2 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "124"
       ],
@@ -476,7 +476,7 @@
     {
       "type": "NK1",
       "rate": 90,
-      "fecility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "103",
         "109",
@@ -491,7 +491,7 @@
     {
       "type": "S11",
       "rate": 145,
-      "fecility": "2 Queen and 1 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Queen and 1 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "123",
         "216"
@@ -501,7 +501,7 @@
     {
       "type": "S12",
       "rate": 145,
-      "fecility": "2 Double and 1 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Double and 1 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "226"
       ],
@@ -510,7 +510,7 @@
     {
       "type": "S13",
       "rate": 145,
-      "fecility": "3 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "3 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "223"
       ],
@@ -519,7 +519,7 @@
     {
       "type": "SNQ3",
       "rate": 145,
-      "fecility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "facility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "rooms": [
         "227",
         "234"
