@@ -14,6 +14,7 @@ import TableDisplay from './TableDisplay';
 // import moment from 'moment';
 
 export default function Walkin() {
+    let now = dayjs().format('YYYY-MM-DD')
     const state = useSelector((state) => state.MainReduser)
     console.log(state)
     const navigate = useNavigate()
@@ -21,12 +22,14 @@ export default function Walkin() {
     const RoomList = GetRoomList()
     const dispatch = useDispatch()
     const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
-    const [Data, setData] = useState({ "status": "In House", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
     const [Rate, setRate] = useState(Number(SeltdRomTy.rate))
-    const [Adults, setAdults] = useState(0)
-    const [Child, setChild] = useState(0)
-    const [TotalPerson, setTotalPerson] = useState(0)
     const [HandleStayDays, setHandleStayDays] = useState(1);
+    const [PaidAmount, setPaidAmount] = useState(0)
+    const [PaymentData, setPaymentData] = useState({})
+    const [Data, setData] = useState({ "checkin": dayjs().startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'), "account": [], "status": "In House", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
+    const [Adults, setAdults] = useState('')
+    const [Child, setChild] = useState('')
+    const [TotalPerson, setTotalPerson] = useState(0)
     // const disabledDate1 = (current) => {
     //     return current && current < dayjs().startOf('day');
     // };
@@ -65,14 +68,19 @@ export default function Walkin() {
     }, [Adults, Child])
     const FinalSubmit = (event) => {
         event.preventDefault()
-        let AddId = 1;
-        if (state.length > 0) {
-            AddId = state[state.length - 1].id + 1
+        if (TotalPerson === 0) {
+            alert("Please, Enter atlease one Adult")
+            document.getElementById("TotalAdults").focus()
+        } else {
+            let AddId = 1;
+            if (state.length > 0) {
+                AddId = state[state.length - 1].id + 1
+            }
+            dispatch(PostDispatch(Data, AddId, "MainDataApi"))
+            setData({ "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
+            document.getElementById("MainForm").reset()
+            navigate("/Home")
         }
-        dispatch(PostDispatch(Data, AddId, "MainDataApi"))
-        setData({ "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
-        document.getElementById("MainForm").reset()
-        navigate("/Home")
     }
     return (
         <>
@@ -94,7 +102,7 @@ export default function Walkin() {
                                 <Form.Control className="iinput" required type="text" placeholder="Enter Address" onChange={(event) => { setData({ ...Data, "address": event.target.value }) }} />
                             </Form.Group>
                         </Col>
-                        <Col md={6}>
+                        <Col lg={6}>
                             <Form.Group className="mb-1" controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control className="iinput" required type="email" placeholder="Enter email" onChange={(event) => { setData({ ...Data, "email": event.target.value }) }} />
@@ -103,7 +111,7 @@ export default function Walkin() {
                                 </Form.Text>
                             </Form.Group>
                         </Col>
-                        <Col md={6}>
+                        <Col lg={6}>
                             <Form.Group className="mb-1">
                                 <Form.Label>Telephone</Form.Label>
                                 <Form.Control className="iinput" required type="number" placeholder="Mo. Number" id="number" onChange={(event) => { setData({ ...Data, "telephone": event.target.value }) }} />
@@ -114,8 +122,8 @@ export default function Walkin() {
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
                         </Col>
-                        <Col xs={12}>
-                            <InputGroup className="mb-1 w-25">
+                        <Col md={12}>
+                            <InputGroup className="mb-1 w-50">
                                 <InputGroup.Text>Status</InputGroup.Text>
                                 <Form.Select>
                                     return <option value="In House">In House</option>
@@ -124,7 +132,7 @@ export default function Walkin() {
                             </InputGroup>
                         </Col>
 
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-2">
                                 <InputGroup.Text>Check In</InputGroup.Text>
                                 <DatePicker
@@ -136,19 +144,19 @@ export default function Walkin() {
                                 />
                             </InputGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-2">
                                 <InputGroup.Text>Check Out</InputGroup.Text>
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate2}
-                                    defaultValue={dayjs().add(1, 'day').endOf('day')}
+                                    defaultValue={dayjs().add(1, 'day').startOf('day')}
                                     id="d2"
                                     onChange={TotapDays}
                                 />
                             </InputGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-2">
                                 <InputGroup.Text>Totap Days</InputGroup.Text>
                                 <Form.Control type="number" value={HandleStayDays} disabled />
@@ -156,26 +164,26 @@ export default function Walkin() {
                         </Col>
 
 
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Total Adults</InputGroup.Text>
-                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(parseInt(event.target.value)); setData({ ...Data, "adults": event.target.value }) }} />
+                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value.replace(/[^0-9]/)); setData({ ...Data, "adults": event.target.value }) }} />
                             </InputGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total Children</InputGroup.Text>
-                                <Form.Control type="number" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(parseInt(event.target.value)); setData({ ...Data, "childs": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": event.target.value }) }} />
                             </InputGroup>
                         </Col>
-                        <Col md={4}>
+                        <Col lg={4}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total Persons</InputGroup.Text>
                                 <Form.Control type="number" disabled value={TotalPerson} />
                             </InputGroup>
                         </Col>
 
-                        <Col md={2}>
+                        <Col lg={2}>
                             <Form.Select className="mb-1" required onChange={(event) => SelectRoomType(event)}>
                                 {
                                     RoomList.map((res, index) => {
@@ -184,13 +192,13 @@ export default function Walkin() {
                                 }
                             </Form.Select>
                         </Col>
-                        <Col md={8}>
+                        <Col lg={8}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Facility</InputGroup.Text>
                                 <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
                             </InputGroup>
                         </Col>
-                        <Col md={2}>
+                        <Col lg={2}>
                             <Form.Select className="mb-1" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": event.target.value }) }}>
                                 {
                                     SeltdRomTy.rooms.map((res, index) => {
@@ -200,28 +208,28 @@ export default function Walkin() {
                             </Form.Select>
                         </Col>
 
-                        <Col md={3}>
+                        <Col lg={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Room Rate</InputGroup.Text>
-                                <Form.Control type="number" required value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" required value={Rate || ""} onChange={(event) => { setRate(parseInt(event.target.value)); setData({ ...Data, "rate": parseInt(event.target.value) }) }} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <Col md={3}>
+                        <Col lg={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Tax</InputGroup.Text>
                                 <Form.Control disabled type="number" value={(Number(Rate) * (0.09)).toFixed(2)} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <Col md={3}>
+                        <Col lg={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total</InputGroup.Text>
                                 <Form.Control disabled type="number" value={(Number(Rate) + (Number(Rate) * 0.09)).toFixed(2)} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
-                        <Col md={3}>
+                        <Col lg={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Grand Total</InputGroup.Text>
                                 <Form.Control disabled type="number" value={((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)} />
@@ -236,7 +244,7 @@ export default function Walkin() {
                         </Col>
                         <Col xs={4}>
                             <InputGroup className="mb-1">
-                                <InputGroup.Text>Total Charge</InputGroup.Text>
+                                <InputGroup.Text>Total Amount</InputGroup.Text>
                                 <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
@@ -244,24 +252,23 @@ export default function Walkin() {
                         <Col xs={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Paid Amount</InputGroup.Text>
-                                <InputGroup.Text className="fw-bold bg-success text-white">{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
                         <Col xs={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Due Amount</InputGroup.Text>
-                                <InputGroup.Text className="fw-bold bg-danger text-white">{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
+                        <div className='bg-success pt-3'>
 
-                        <TableDisplay />
-
-
+                            {/* <TableDisplay id={id} /> */}
+                        </div>
 
                     </Row>
-
 
                     <div className="mt-2 d-flex justify-content-center">
                         <Button variant="warning" type="submit" className="SubmitButton" >

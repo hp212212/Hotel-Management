@@ -60,6 +60,7 @@ export default function TableDisplay(Props) {
             Status: "Success..."
         });
     }
+    console.log(data)
     return (
         <>
             <Table columns={columns} dataSource={data} size="small" />

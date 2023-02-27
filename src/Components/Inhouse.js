@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -250,7 +250,7 @@ export default function Inhouse() {
                         </Col>
                         <Col xs={4}>
                             <InputGroup className="mb-1">
-                                <InputGroup.Text>Total Charge</InputGroup.Text>
+                                <InputGroup.Text>Total Amount</InputGroup.Text>
                                 <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
@@ -269,8 +269,10 @@ export default function Inhouse() {
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
+                        <div className='bg-success pt-3'>
 
-                        <TableDisplay id={id}/>
+                            <TableDisplay id={id} />
+                        </div>
 
                     </Row>
 

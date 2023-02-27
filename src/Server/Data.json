@@ -1,6 +1,7 @@
 {
   "MainDataApi": [
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -18,6 +19,7 @@
       "id": 1
     },
     {
+      "account": [],
       "roomtype": "SNQ3",
       "status": "Check Out",
       "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -35,6 +37,7 @@
       "id": 2
     },
     {
+      "account": [],
       "roomtype": "S11",
       "status": "Check Out",
       "roomfacility": "2 Queen and 1 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -52,6 +55,7 @@
       "id": 3
     },
     {
+      "account": [],
       "roomtype": "NK1",
       "status": "In House",
       "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -69,6 +73,7 @@
       "id": 4
     },
     {
+      "account": [],
       "roomtype": "NDD1",
       "status": "Check Out",
       "roomfacility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -86,6 +91,7 @@
       "id": 5
     },
     {
+      "account": [],
       "roomtype": "SNQ3",
       "status": "In House",
       "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -103,6 +109,7 @@
       "id": 6
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Check Out",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -120,6 +127,7 @@
       "id": 7
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Check Out",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -137,6 +145,7 @@
       "id": 8
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Check Out",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -154,6 +163,7 @@
       "id": 9
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Check Out",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -171,6 +181,7 @@
       "id": 10
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -188,6 +199,7 @@
       "id": 11
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -205,6 +217,7 @@
       "id": 12
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -222,6 +235,7 @@
       "id": 13
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -239,6 +253,7 @@
       "id": 14
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "In House",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -256,6 +271,7 @@
       "id": 15
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Check Out",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -273,6 +289,7 @@
       "id": 16
     },
     {
+      "account": [],
       "roomtype": "NQQ1",
       "status": "Reservation",
       "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -290,6 +307,7 @@
       "id": 17
     },
     {
+      "account": [],
       "roomtype": "S13",
       "status": "In House",
       "roomfacility": "3 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -307,6 +325,7 @@
       "id": 18
     },
     {
+      "account": [],
       "roomtype": "S12",
       "status": "In House",
       "roomfacility": "2 Double and 1 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -324,6 +343,7 @@
       "id": 19
     },
     {
+      "account": [],
       "roomtype": "NK1",
       "status": "In House",
       "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -341,6 +361,7 @@
       "id": 20
     },
     {
+      "account": [],
       "roomtype": "SNQ3",
       "status": "In House",
       "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -358,6 +379,7 @@
       "id": 21
     },
     {
+      "account": [],
       "roomtype": "NK1",
       "status": "In House",
       "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
@@ -376,6 +398,7 @@
     },
     {
       "status": "In House",
+      "account": [],
       "roomtype": "NK1",
       "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "120",
@@ -393,6 +416,7 @@
     },
     {
       "status": "Reservation",
+      "account": [],
       "roomtype": "SNQ3",
       "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": "227",
@@ -407,6 +431,176 @@
       "adults": "2",
       "childs": "1",
       "id": 24
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-02-28",
+      "account": [],
+      "status": "In House",
+      "roomtype": "SNQ3",
+      "roomfacility": "2 Queen and 1 King Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "227",
+      "rate": 145,
+      "fname": "25 Pateria",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "ppp212212@gmail.com",
+      "adults": "0",
+      "childs": "0",
+      "id": 25
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-02-28",
+      "account": [],
+      "status": "In House",
+      "roomtype": "NQQ2",
+      "roomfacility": "2 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "121",
+      "rate": 125,
+      "fname": "Janny",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "jjp212212@gmail.com",
+      "adults": "1",
+      "childs": "0",
+      "id": 26
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-02-28",
+      "account": [],
+      "status": "In House",
+      "roomtype": "NDD2",
+      "roomfacility": "2 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "124",
+      "rate": 135,
+      "fname": "Garry Garry",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260817",
+      "email": "ggp212212@gmail.com",
+      "adults": "0",
+      "childs": "0",
+      "id": 27
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-02-28",
+      "account": [],
+      "status": "In House",
+      "roomtype": "NK1",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "120",
+      "rate": 90,
+      "fname": "Rekha Patel",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "rrp212212@gmail.com",
+      "adults": "1",
+      "childs": "0",
+      "id": 28
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-02-28",
+      "account": [
+        {
+          "totalamount": "98.10",
+          "dueamount": "98.10",
+          "paidamount": 0
+        }
+      ],
+      "status": "In House",
+      "roomtype": "NK1",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "117",
+      "rate": 90,
+      "fname": "jyanti",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "jjjp212212@gmail.com",
+      "adults": "1",
+      "childs": "2",
+      "id": 29
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-03-01",
+      "account": [
+        {
+          "totalamount": 98.1,
+          "dueamount": 98.1,
+          "paidamount": 0
+        }
+      ],
+      "status": "In House",
+      "roomtype": "NDD2",
+      "roomfacility": "2 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "124",
+      "rate": "200",
+      "fname": "Vallav",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "vvvp212212@gmail.com",
+      "adults": "2",
+      "childs": "1",
+      "staydays": 2,
+      "id": 30
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-03-11",
+      "totalamount": [],
+      "account": [],
+      "status": "In House",
+      "roomtype": "NDD1",
+      "roomfacility": "2 Double Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "119",
+      "rate": 125,
+      "fname": "uuuuuuuuuuuu",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "uuup212212@gmail.com",
+      "staydays": 12,
+      "adults": "2",
+      "childs": "2",
+      "id": 31
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-03-02",
+      "account": [],
+      "status": "In House",
+      "roomtype": "NDD2",
+      "roomfacility": "2 Double Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "124",
+      "rate": "200",
+      "fname": "lllll",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "ooop212212@gmail.com",
+      "staydays": 3,
+      "adults": "5",
+      "childs": "5",
+      "id": 32
+    },
+    {
+      "checkin": "2023-02-27",
+      "checkout": "2023-03-03",
+      "account": [],
+      "status": "In House",
+      "roomtype": "NQQ2",
+      "roomfacility": "2 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": "121",
+      "rate": 250,
+      "fname": "ffffffffffffffff",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "fffp212212@gmail.com",
+      "staydays": 4,
+      "adults": "5",
+      "childs": "5",
+      "id": 33
     }
   ],
   "Reservations": [],

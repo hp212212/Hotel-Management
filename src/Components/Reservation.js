@@ -149,13 +149,13 @@ export default function Reservation() {
                         <Col md={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Total Adults</InputGroup.Text>
-                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(parseInt(event.target.value)); setData({ ...Data, "adults": event.target.value }) }} />
+                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value); setData({ ...Data, "adults": event.target.value }) }} />
                             </InputGroup>
                         </Col>
                         <Col md={4}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total Children</InputGroup.Text>
-                                <Form.Control type="number" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(parseInt(event.target.value)); setData({ ...Data, "childs": event.target.value }) }} />
+                                <Form.Control type="number" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": event.target.value }) }} />
                             </InputGroup>
                         </Col>
                         <Col md={4}>
