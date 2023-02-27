@@ -10,9 +10,11 @@ import dayjs from 'dayjs';
 import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
 import { PostDispatch } from '../Redux Folder/Dispatch';
+import TableDisplay from './TableDisplay';
 // import moment from 'moment';
 
 export default function Reservation() {
+    let now = dayjs().format('YYYY-MM-DD')
     const state = useSelector((state) => state.MainReduser)
     console.log(state)
     const navigate = useNavigate()
@@ -20,17 +22,19 @@ export default function Reservation() {
     const RoomList = GetRoomList()
     const dispatch = useDispatch()
     const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
-    const [Data, setData] = useState({"status": "Reservation", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
     const [Rate, setRate] = useState(Number(SeltdRomTy.rate))
+    const [HandleStayDays, setHandleStayDays] = useState(1);
+    const [PaidAmount, setPaidAmount] = useState(0)
+    const [PaymentData, setPaymentData] = useState({})
+    const [Data, setData] = useState({ "checkin": dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().add(2, 'day').startOf('day').format('YYYY-MM-DD'), "account": [], "status": "Reservation", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
     const [Adults, setAdults] = useState(0)
     const [Child, setChild] = useState(0)
     const [TotalPerson, setTotalPerson] = useState(0)
-    const [HandleStayDays, setHandleStayDays] = useState(1);
     const disabledDate1 = (current) => {
-        return current && current < dayjs().add(1,'day').endOf('day');
+        return current && current < dayjs().add(1, 'day').endOf('day');
     };
     const disabledDate2 = (current) => {
-        return current && current < dayjs().add(2,'day').endOf('day');
+        return current && current < dayjs().add(2, 'day').endOf('day');
     };
     const TotapDays = () => {
         var d1 = document.getElementById("d1").value
@@ -62,16 +66,36 @@ export default function Reservation() {
     useEffect(() => {
         setTotalPerson(Number(Adults) + Number(Child))
     }, [Adults, Child])
+    const AddPayment = () => {
+        if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
+            alert("please Add valid Paymint.")
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        } else {
+            // setPaymentData({ ...PaymentData, "date": now })
+            PaymentData["date"] = now
+            setPaidAmount((Number(PaidAmount) + Number(PaymentData.amount)).toFixed(2))
+            Data.account.push(PaymentData)
+            setPaymentData({})
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        }
+    }
     const FinalSubmit = (event) => {
         event.preventDefault()
-        let AddId = 1;
-        if (state.length > 0) {
-            AddId = state[state.length - 1].id + 1
+        if (TotalPerson === 0) {
+            alert("Please, Enter atlease one Adult")
+            document.getElementById("TotalAdults").focus()
+        } else {
+            let AddId = 1;
+            if (state.length > 0) {
+                AddId = state[state.length - 1].id + 1
+            }
+            dispatch(PostDispatch(Data, AddId, "MainDataApi"))
+            setData({ "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
+            document.getElementById("MainForm").reset()
+            navigate("/Home")
         }
-        dispatch(PostDispatch(Data, AddId, "MainDataApi"))
-        setData({ "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
-        document.getElementById("MainForm").reset()
-        navigate("/Home")
     }
     return (
         <>
@@ -109,6 +133,7 @@ export default function Reservation() {
                             </Form.Group>
                         </Col>
                     </Row>
+
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
@@ -120,7 +145,7 @@ export default function Reservation() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate1}
-                                    defaultValue={dayjs().add(1,'day').endOf('day')}
+                                    defaultValue={dayjs().add(1, 'day').startOf('day')}
                                     // disabled
                                     id="d1"
                                 />
@@ -132,7 +157,7 @@ export default function Reservation() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate2}
-                                    defaultValue={dayjs().add(2,'day').endOf('day')}
+                                    defaultValue={dayjs().add(2, 'day').startOf('day')}
                                     id="d2"
                                     onChange={TotapDays}
                                 />
@@ -174,10 +199,17 @@ export default function Reservation() {
                                 }
                             </Form.Select>
                         </Col>
-                        <Col md={8}>
+                        <Col md={7}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Facility</InputGroup.Text>
                                 <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Rate</InputGroup.Text>
+                                <Form.Control type="number" disabled value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": event.target.value }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
                         <Col md={2}>
@@ -190,13 +222,7 @@ export default function Reservation() {
                             </Form.Select>
                         </Col>
 
-                        <Col md={3}>
-                            <InputGroup className="mb-1 d-none" >
-                                <InputGroup.Text>Room Rate</InputGroup.Text>
-                                <Form.Control type="number" required value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": event.target.value }) }} />
-                                <InputGroup.Text> $</InputGroup.Text>
-                            </InputGroup>
-                        </Col>
+
                         <Col md={3}>
                             <InputGroup className="mb-1 d-none" >
                                 <InputGroup.Text>Tax</InputGroup.Text>
@@ -220,6 +246,61 @@ export default function Reservation() {
                         </Col>
                     </Row>
 
+                    <Row className="border border-2 border-warning rounded-1 mt-2">
+                        <Col xs={12} className="text-center">
+                            <h3>Account Section</h3>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Total Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Paid Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Due Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col xs={12} className='bg-success pt-3'>
+
+                            {
+                                Data.account.length > 0 ? <TableDisplay res={Data.account} /> : null
+                            }
+                        </Col>
+                        <Col lg={6} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Payment Method</InputGroup.Text>
+                                <Form.Select id="SelectPaymentMethod" aria-label="Default select example" onChange={(event) => { setPaymentData({ ...PaymentData, "paymentmethod": event.target.value }) }}  >
+                                    <option value="none"></option>
+                                    <option value="Master Card">Master Card</option>
+                                    <option value="Visa Card">Visa Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Cash">Cash</option>
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Amount</InputGroup.Text>
+                                <Form.Control type="number" id="PaymentAmount" onChange={(event) => { setPaymentData({ ...PaymentData, "amount": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={2} className="mt-2">
+                            <Button type="button" onClick={AddPayment} className="w-100" variant="outline-success">Add</Button>
+                        </Col>
+
+                    </Row>
 
                     <div className="mt-2 d-flex justify-content-center">
                         <Button variant="warning" type="submit" className="SubmitButton" >

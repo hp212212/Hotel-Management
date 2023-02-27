@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, InputGroup } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,9 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PutDispatch } from '../Redux Folder/Dispatch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
+import TableDisplay from './TableDisplay';
 // import moment from 'moment';
 
 export default function ReservationInhouse() {
+    var now = dayjs().format('YYYY-MM-DD')
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const kaka = useSelector((state) => state.MainReduser)
@@ -26,7 +28,13 @@ export default function ReservationInhouse() {
         }
     }
     const [Reservation, setReservation] = useState(kakaid)
+    let EarlyPaidAmount = 0
+    for (let i = 0; i < Reservation.account.length; i++) {
+        EarlyPaidAmount = EarlyPaidAmount + Number(Reservation.account[i].amount)
+    }
     const RoomList = GetRoomList()
+    const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
+    const [PaymentData, setPaymentData] = useState({})
     let ggg = ''
     for (let i = 0; i < RoomList.length; i++) {
         if (Reservation.roomtype === RoomList[i].type) {
@@ -67,6 +75,21 @@ export default function ReservationInhouse() {
         setReservation({ ...Reservation, "checkin": d1, "checkout": d2, "staydays": days })
     }
     // (event) => { setReservation({ ...Reservation, "status": event.target.value }) }
+    const AddPayment = () => {
+        if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
+            alert("please Add valid Paymint.")
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        } else {
+            // setPaymentData({ ...PaymentData, "date": now })
+            PaymentData["date"] = now
+            setPaidAmount((Number(PaidAmount) + Number(PaymentData.amount)).toFixed(2))
+            Reservation.account.push(PaymentData)
+            setPaymentData({})
+            document.getElementById("SelectPaymentMethod").selectedIndex = 0
+            document.getElementById("PaymentAmount").value = ''
+        }
+    }
     const FinalSubmit = (event) => {
         event.preventDefault()
         let EditId = Reservation.id;
@@ -110,6 +133,7 @@ export default function ReservationInhouse() {
                             </Form.Group>
                         </Col>
                     </Row>
+
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
@@ -231,6 +255,62 @@ export default function ReservationInhouse() {
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
+                    </Row>
+
+                    <Row className="border border-2 border-warning rounded-1 mt-2">
+                        <Col xs={12} className="text-center">
+                            <h3>Account Section</h3>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Total Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Paid Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Due Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col xs={12} className='bg-success pt-3'>
+
+                            {
+                                Reservation.account.length > 0 ? <TableDisplay res={Reservation.account} /> : null
+                            }
+                        </Col>
+                        <Col lg={6} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Payment Method</InputGroup.Text>
+                                <Form.Select id="SelectPaymentMethod" aria-label="Default select example" onChange={(event) => { setPaymentData({ ...PaymentData, "paymentmethod": event.target.value }) }}  >
+                                    <option value="none"></option>
+                                    <option value="Master Card">Master Card</option>
+                                    <option value="Visa Card">Visa Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Cash">Cash</option>
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Amount</InputGroup.Text>
+                                <Form.Control type="number" id="PaymentAmount" onChange={(event) => { setPaymentData({ ...PaymentData, "amount": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={2} className="mt-2">
+                            <Button type="button" onClick={AddPayment} className="w-100" variant="outline-success">Add</Button>
+                        </Col>
+
                     </Row>
 
 
