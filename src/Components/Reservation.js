@@ -23,7 +23,7 @@ export default function Reservation() {
     const dispatch = useDispatch()
     const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
     const [Rate, setRate] = useState(Number(SeltdRomTy.rate))
-    const [HandleStayDays, setHandleStayDays] = useState(1);
+    const [HandleStayDays, setHandleStayDays] = useState(0);
     const [PaidAmount, setPaidAmount] = useState(0)
     const [PaymentData, setPaymentData] = useState({})
     const [Data, setData] = useState({ "checkin": dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().add(2, 'day').startOf('day').format('YYYY-MM-DD'), "account": [], "status": "Reservation", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
@@ -43,25 +43,25 @@ export default function Reservation() {
         const dateTwo = new Date(d2)
         const diff = Math.abs(dateTwo - dateOne)
         const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
-        setHandleStayDays(days)
-        setData({ ...Data, "checkin": d1, "checkout": d2, "staydays": days })
+        if ((dateOne < dateTwo)) {
+            setHandleStayDays(days)
+            setData({ ...Data, "checkin": d1, "checkout": d2, "staydays": days })
+        } else {
+            setHandleStayDays(0)
+        }
     }
     const SelectRoomType = (event) => {
         RoomType = event.target.value
         document.getElementById("RoomNoInput").selectedIndex = 1
-        if (RoomType !== "Room Type") {
-            for (let i = 0; i < RoomList.length; i++) {
-                if (RoomType === RoomList[i].type) {
-                    setSeltdRomTy(RoomList[i])
-                    setRate(RoomList[i].rate)
-                    setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
-                    break
-                }
+        for (let i = 0; i < RoomList.length; i++) {
+            if (RoomType === RoomList[i].type) {
+                setSeltdRomTy(RoomList[i])
+                setRate(RoomList[i].rate)
+                setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
+                break
             }
-        } else {
-            setSeltdRomTy([])
-            setRate(0)
         }
+
     }
     useEffect(() => {
         setTotalPerson(Number(Adults) + Number(Child))
@@ -86,6 +86,8 @@ export default function Reservation() {
         if (TotalPerson === 0) {
             alert("Please, Enter atlease one Adult")
             document.getElementById("TotalAdults").focus()
+        } else if (HandleStayDays === 0) {
+            alert("Please Add Some Days")
         } else {
             let AddId = 1;
             if (state.length > 0) {
@@ -101,6 +103,9 @@ export default function Reservation() {
         <>
             <Container className="my-2">
                 <Form onSubmit={FinalSubmit} id="MainForm">
+
+                    {/* ---------------------Personal Detail------------------------------ */}
+
                     <Row className="border border-2 border-warning rounded-1">
                         <Col xs={12} className="text-center">
                             <h3>Personal Detail</h3>
@@ -134,6 +139,8 @@ export default function Reservation() {
                         </Col>
                     </Row>
 
+                    {/* ---------------------Hotel Inventary------------------------------ */}
+
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
@@ -145,9 +152,10 @@ export default function Reservation() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate1}
-                                    defaultValue={dayjs().add(1, 'day').startOf('day')}
+                                    defaultValue={dayjs().add(1, 'day').endOf('day')}
                                     // disabled
                                     id="d1"
+                                    onChange={TotapDays}
                                 />
                             </InputGroup>
                         </Col>
@@ -157,7 +165,7 @@ export default function Reservation() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate2}
-                                    defaultValue={dayjs().add(2, 'day').startOf('day')}
+                                    defaultValue={dayjs().add(1, 'day').endOf('day')}
                                     id="d2"
                                     onChange={TotapDays}
                                 />
@@ -174,13 +182,13 @@ export default function Reservation() {
                         <Col md={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Total Adults</InputGroup.Text>
-                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value); setData({ ...Data, "adults": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) }) }} />
                             </InputGroup>
                         </Col>
                         <Col md={4}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total Children</InputGroup.Text>
-                                <Form.Control type="number" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) }) }} />
                             </InputGroup>
                         </Col>
                         <Col md={4}>
@@ -190,30 +198,26 @@ export default function Reservation() {
                             </InputGroup>
                         </Col>
 
-                        <Col md={2}>
-                            <Form.Select className="mb-1" required onChange={(event) => SelectRoomType(event)}>
-                                {
-                                    RoomList.map((res, index) => {
-                                        return <option value={res.type}>{res.type}</option>
-                                    })
-                                }
-                            </Form.Select>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Type</InputGroup.Text>
+                                <Form.Select required onChange={(event) => SelectRoomType(event)}>
+                                    {
+                                        RoomList.map((res, index) => {
+                                            return <option value={res.type}>{res.type}</option>
+                                        })
+                                    }
+                                </Form.Select>
+                            </InputGroup>
                         </Col>
-                        <Col md={7}>
+                        <Col md={6}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Facility</InputGroup.Text>
                                 <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
                             </InputGroup>
                         </Col>
                         <Col md={3}>
-                            <InputGroup className="mb-1" >
-                                <InputGroup.Text>Room Rate</InputGroup.Text>
-                                <Form.Control type="number" disabled value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": event.target.value }) }} />
-                                <InputGroup.Text> $</InputGroup.Text>
-                            </InputGroup>
-                        </Col>
-                        <Col md={2}>
-                            <Form.Select className="mb-1 d-none" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": event.target.value }) }}>
+                            <Form.Select className="mb-1" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": Number(event.target.value) }) }}>
                                 {
                                     SeltdRomTy.rooms.map((res, index) => {
                                         return <option value={res}>{res}</option>
@@ -224,27 +228,36 @@ export default function Reservation() {
 
 
                         <Col md={3}>
-                            <InputGroup className="mb-1 d-none" >
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Rate</InputGroup.Text>
+                                <Form.Control type="number" value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
                                 <InputGroup.Text>Tax</InputGroup.Text>
                                 <Form.Control disabled type="number" value={(Number(Rate) * (0.09)).toFixed(2)} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
                         <Col md={3}>
-                            <InputGroup className="mb-1 d-none" >
+                            <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total</InputGroup.Text>
                                 <Form.Control disabled type="number" value={(Number(Rate) + (Number(Rate) * 0.09)).toFixed(2)} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
                         <Col md={3}>
-                            <InputGroup className="mb-1 d-none" >
+                            <InputGroup className="mb-1" >
                                 <InputGroup.Text>Grand Total</InputGroup.Text>
                                 <Form.Control disabled type="number" value={((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
                     </Row>
+
+                    {/* ---------------------Account Section------------------------------ */}
 
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">

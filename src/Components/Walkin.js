@@ -49,18 +49,13 @@ export default function Walkin() {
     const SelectRoomType = (event) => {
         RoomType = event.target.value
         document.getElementById("RoomNoInput").selectedIndex = 1
-        if (RoomType !== "Room Type") {
-            for (let i = 0; i < RoomList.length; i++) {
-                if (RoomType === RoomList[i].type) {
-                    setSeltdRomTy(RoomList[i])
-                    setRate(RoomList[i].rate)
-                    setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
-                    break
-                }
+        for (let i = 0; i < RoomList.length; i++) {
+            if (RoomType === RoomList[i].type) {
+                setSeltdRomTy(RoomList[i])
+                setRate(RoomList[i].rate)
+                setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
+                break
             }
-        } else {
-            setSeltdRomTy([])
-            setRate(0)
         }
     }
     useEffect(() => {
@@ -86,6 +81,8 @@ export default function Walkin() {
         if (TotalPerson === 0) {
             alert("Please, Enter atlease one Adult")
             document.getElementById("TotalAdults").focus()
+        } else if (HandleStayDays === 0) {
+            alert("Please Some Days")
         } else {
             let AddId = 1;
             if (state.length > 0) {
@@ -101,6 +98,9 @@ export default function Walkin() {
         <>
             <Container className="my-2">
                 <Form onSubmit={FinalSubmit} id="MainForm">
+
+                    {/* ---------------------Personal Detail------------------------------ */}
+
                     <Row className="border border-2 border-warning rounded-1">
                         <Col xs={12} className="text-center">
                             <h3>Personal Detail</h3>
@@ -133,6 +133,9 @@ export default function Walkin() {
                             </Form.Group>
                         </Col>
                     </Row>
+
+                    {/* ---------------------Hotel Inventary------------------------------ */}
+
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
@@ -182,13 +185,13 @@ export default function Walkin() {
                         <Col lg={4}>
                             <InputGroup className="mb-1">
                                 <InputGroup.Text>Total Adults</InputGroup.Text>
-                                <Form.Control type="number" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value.replace(/[^0-9]/)); setData({ ...Data, "adults": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) }) }} />
                             </InputGroup>
                         </Col>
                         <Col lg={4}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Total Children</InputGroup.Text>
-                                <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": event.target.value }) }} />
+                                <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) }) }} />
                             </InputGroup>
                         </Col>
                         <Col lg={4}>
@@ -198,23 +201,26 @@ export default function Walkin() {
                             </InputGroup>
                         </Col>
 
-                        <Col lg={2}>
-                            <Form.Select className="mb-1" required onChange={(event) => SelectRoomType(event)}>
-                                {
-                                    RoomList.map((res, index) => {
-                                        return <option value={res.type}>{res.type}</option>
-                                    })
-                                }
-                            </Form.Select>
+                        <Col lg={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Type</InputGroup.Text>
+                                <Form.Select required onChange={(event) => SelectRoomType(event)}>
+                                    {
+                                        RoomList.map((res, index) => {
+                                            return <option value={res.type}>{res.type}</option>
+                                        })
+                                    }
+                                </Form.Select>
+                            </InputGroup>
                         </Col>
-                        <Col lg={8}>
+                        <Col lg={6}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Facility</InputGroup.Text>
                                 <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
                             </InputGroup>
                         </Col>
-                        <Col lg={2}>
-                            <Form.Select className="mb-1" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": event.target.value }) }}>
+                        <Col lg={3}>
+                            <Form.Select className="mb-1" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": Number(event.target.value) }) }}>
                                 {
                                     SeltdRomTy.rooms.map((res, index) => {
                                         return <option value={res}>{res}</option>
@@ -226,7 +232,7 @@ export default function Walkin() {
                         <Col lg={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Room Rate</InputGroup.Text>
-                                <Form.Control type="number" pattern="[0-9]" required value={Rate || ""} onChange={(event) => { setRate(parseInt(event.target.value)); setData({ ...Data, "rate": parseInt(event.target.value) }) }} />
+                                <Form.Control type="number" pattern="[0-9]" required value={Rate || ""} onChange={(event) => { setRate(Number(event.target.value)); setData({ ...Data, "rate": Number(event.target.value) }) }} />
                                 <InputGroup.Text> $</InputGroup.Text>
                             </InputGroup>
                         </Col>
@@ -252,6 +258,8 @@ export default function Walkin() {
                             </InputGroup>
                         </Col>
                     </Row>
+
+                    {/* ---------------------Account Section------------------------------ */}
 
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">

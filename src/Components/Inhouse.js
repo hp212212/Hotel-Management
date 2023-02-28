@@ -101,15 +101,23 @@ export default function Inhouse() {
     }
     const FinalSubmit = (event) => {
         event.preventDefault()
-        let EditId = Reservation.id;
-        dispatch(PutDispatch(Reservation, EditId, "MainDataApi"))
-        // document.getElementById("MainForm").reset()
-        navigate("/Home")
+        if (HandleStayDays === 0) {
+            alert("Please Some Days")
+        } else {
+            let EditId = Reservation.id;
+            dispatch(PutDispatch(Reservation, EditId, "MainDataApi"))
+            // document.getElementById("MainForm").reset()
+            navigate("/Home")
+        }
+
     }
     return (
         <>
             <Container className="my-2">
                 <Form onSubmit={FinalSubmit} id="MainForm">
+
+                    {/* --------------------Personal Detail------------------- */}
+
                     <Row className="border border-2 border-warning rounded-1">
                         <Col xs={12} className="text-center">
                             <h3>Personal Detail</h3>
@@ -143,6 +151,8 @@ export default function Inhouse() {
                         </Col>
                     </Row>
 
+                    {/* --------------------Hotel Inventary------------------- */}
+
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
                             <h3>Hotel Inventary</h3>
@@ -175,7 +185,7 @@ export default function Inhouse() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate2}
-                                    defaultValue={dayjs(Reservation.checkout).startOf('day')}
+                                    defaultValue={dayjs(Reservation.checkout).endOf('day')}
                                     id="d2"
                                     onChange={TotalDays}
                                 />
@@ -226,7 +236,7 @@ export default function Inhouse() {
                                 <Form.Control type="text" disabled value={Reservation.roomno} />
                                 <InputGroup.Text ><FaEdit type='button' title="Edit" onClick={ChangeRoomNoFlex} /></InputGroup.Text>
                             </InputGroup>
-                            <Form.Select className={`mb-1 ${RoomNoFlex2}`} id="RoomNoInput" onChange={(event) => { setReservation({ ...Reservation, "roomno": event.target.value }) }}>
+                            <Form.Select className={`mb-1 ${RoomNoFlex2}`} id="RoomNoInput" onChange={(event) => { setReservation({ ...Reservation, "roomno": Number(event.target.value) }) }}>
                                 {
                                     SeltdRomTy.rooms.map((res, index) => {
                                         return <option value={res}>{res}</option>
@@ -238,7 +248,7 @@ export default function Inhouse() {
                         <Col md={3}>
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Roon Rate</InputGroup.Text>
-                                <Form.Control type="number" id="RoomRateChangeEnable" required value={Rate || ""} disabled={true} onChange={(event) => { setRate(event.target.value); setReservation({ ...Reservation, "rate": event.target.value }) }} />
+                                <Form.Control type="number" id="RoomRateChangeEnable" required value={Rate || ""} disabled={true} onChange={(event) => { setRate(Number(event.target.value)); setReservation({ ...Reservation, "rate": Number(event.target.value) }) }} />
                                 <InputGroup.Text>$</InputGroup.Text>
                                 <InputGroup.Text className={RateEditBtn}><FaEdit type='button' title="Edit" onClick={ChangeRoomRateFlex} /></InputGroup.Text>
                             </InputGroup>
@@ -265,6 +275,8 @@ export default function Inhouse() {
                             </InputGroup>
                         </Col>
                     </Row>
+
+                    {/* --------------------Account Section------------------- */}
 
                     <Row className="border border-2 border-warning rounded-1 mt-2">
                         <Col xs={12} className="text-center">
