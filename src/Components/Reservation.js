@@ -20,6 +20,7 @@ export default function Reservation() {
     const navigate = useNavigate()
     let RoomType = ""
     const RoomList = GetRoomList()
+    // const RoomList = []
     const dispatch = useDispatch()
     const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
     const [Rate, setRate] = useState(Number(SeltdRomTy.rate))

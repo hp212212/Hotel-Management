@@ -32,6 +32,7 @@ export default function ReservationInhouse() {
     for (let i = 0; i < Reservation.account.length; i++) {
         EarlyPaidAmount = EarlyPaidAmount + Number(Reservation.account[i].amount)
     }
+    // const RoomList = []
     const RoomList = GetRoomList()
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
     const [PaymentData, setPaymentData] = useState({})

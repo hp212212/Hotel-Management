@@ -1,29 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../Css/Extra.css'
 import dayjs from 'dayjs'
-import { useSelector } from 'react-redux'
-// import relativeTime from 'dayjs/plugin/relativeTime'
+import { useDispatch, useSelector } from 'react-redux'
 import { GetRoomList } from '../Server/Services';
+import { FindRoomsDispatch } from '../Redux Folder/Dispatch';
 
-// var relativeTime = require('dayjs/plugin/relativeTime')
-// dayjs.extend(relativeTime)
 export default function Extra() {
+  const dispatch = useDispatch()
   const state = useSelector((state) => state.MainReduser)
+  const hfd8vsdhfuisf = useSelector((state) => state.FindRooms)
   const RoomList = GetRoomList()
-  // const state = useSelector((state) => state.MainReduser)
-  // var now = dayjs().format('YYYY-MM-DD')
-  // const aaa = state[0].checkin
-  // const date1 = dayjs('2019-01-25')
-  // const date2 = dayjs('2018-06-05')
-  // const date1 = dayjs(dayjs().format('YYYY-MM-DD'))
-  // const date2 = dayjs(state[0].checkin)
-  // let TotalDays = date1.diff(date2, 'day')
-  // for (let i = 0; i < TotalDays + 1; i++) {
-  //   console.log(date2.add(i, 'day').format('YYYY-MM-DD'))
-  // }
-  // console.log(now.diff(aaa, 'day'))
-  // const b = a.add(7, 'day').format('YYYY-MM-DD')
+  // const RoomList = []
   let kaka = [1, 2, 3, 4, 5]
+  const [FinalRooms, setFinalRooms] = useState([100, 101])
   const hahahaah = () => {
     let Rooms = []
     for (let i of RoomList) {
@@ -31,30 +20,31 @@ export default function Extra() {
         Rooms = i.rooms
       }
     }
-    console.log(Rooms)
     const date1 = dayjs(dayjs(document.getElementById("d1").value).format('YYYY-MM-DD'))
     const date2 = dayjs(dayjs(document.getElementById("d2").value).format('YYYY-MM-DD'))
     const Room = document.getElementById("Room").value
     let TotalDays = date2.diff(date1, 'day')
     let CheckDay = ''
-    let DeleteRooms = []
     for (let j of state) {
       if ((j.status === "Reservation" || j.status === "In House") && j.roomtype === Room) {
         for (let i = 0; i < TotalDays; i++) {
           CheckDay = date1.add(i, 'day').format('YYYY-MM-DD')
           if (CheckDay >= j.checkin && CheckDay < j.checkout) {
-            DeleteRooms.push(j.roomno)
-            Rooms.splice(Rooms.indexOf(j.roomno), 1)
-            // alert(j.roomno)
+            for (let k = 0; k < Rooms.length; k++) {
+              if (Rooms[k] === j.roomno) {
+                Rooms.splice(k, 1)
+              }
+            }
+            setFinalRooms(Rooms)
+            break
           }
         }
       }
     }
-    console.log(Rooms)
-    console.log(DeleteRooms)
   }
-
-
+  const tatatatatatatata = () => {
+    dispatch(FindRoomsDispatch("2023-03-01", "2023-03-03", "NK1"))
+  }
   return (
     <>
       <div className='Main'> Jay Swaminarayan</div>
@@ -62,8 +52,17 @@ export default function Extra() {
       <input id="d2" placeholder='Date - 2' />
       <input id="Room" placeholder='Room Type' />
 
-      <button className='buttonn' onClick={hahahaah}>Slide</button>
+      <button className='buttonn' onClick={tatatatatatatata}>Slide</button>
 
+      {
+        hfd8vsdhfuisf.map((res, index) => {
+          return (
+            <>
+              <li>{res}</li>
+            </>
+          )
+        })
+      }
 
     </>
   )

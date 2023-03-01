@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import { MainReduser } from './Redusers'
+import { MainReduser, FindRooms } from './Redusers'
 
 
 const CombinedRedusers = combineReducers({
     MainReduser,
+    FindRooms,
 })
 
 export default CombinedRedusers;

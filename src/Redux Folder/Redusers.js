@@ -1,6 +1,8 @@
-import { PostMainDataApi, PutMainDataApi } from "../Server/Services";
+import { useSelector } from "react-redux";
+import { GetRoomList, PostMainDataApi, PutMainDataApi } from "../Server/Services";
 import { Type } from "./ActionType";
-import { defultMainDataApiData } from "./InitialState";
+import { defultMainDataApiData, defultRooms } from "./InitialState";
+import dayjs from 'dayjs'
 
 
 export function MainReduser(state = defultMainDataApiData, action) {
@@ -19,6 +21,43 @@ export function MainReduser(state = defultMainDataApiData, action) {
             }
             console.log(state)
             return state
+        default:
+            return state;
+    }
+}
+export function FindRooms(state = defultRooms, action) {
+    const kaka = defultMainDataApiData
+    const RoomList = GetRoomList()
+    // const RoomList = []
+    switch (action.type) {
+        case Type.RoomFind:
+            let Rooms = []
+            for (let i of RoomList) {
+                if (action.RoomType === i.type) {
+                    Rooms = i.rooms
+                }
+            }
+            const date1 = dayjs(action.Checkin)
+            const date2 = dayjs(action.Checkout)
+            let TotalDays = date2.diff(date1, 'day')
+            let CheckDay = ''
+            for (let j of kaka) {
+                if ((j.status === "Reservation" || j.status === "In House") && j.roomtype === action.RoomType) {
+                    for (let i = 0; i < TotalDays; i++) {
+                        CheckDay = date1.add(i, 'day').format('YYYY-MM-DD')
+                        if (CheckDay >= j.checkin && CheckDay < j.checkout) {
+                            for (let k = 0; k < Rooms.length; k++) {
+                                if (Rooms[k] === j.roomno) {
+                                    Rooms.splice(k, 1)
+                                }
+                            }
+                            state = Rooms
+                            break
+                        }
+                    }
+                }
+            }
+            return state;
         default:
             return state;
     }

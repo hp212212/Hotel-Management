@@ -17,9 +17,12 @@ export function PutDispatch(Data, EditId, Url) {
         Url: Url
     }
 }
-// export function PostReservationsDispatch(Data) {
-//     return {
-//         type: Type.AddReservations,
-//         Load: Data
-//     }
-// }
+
+export function FindRoomsDispatch(Checkin, Checkout, RoomType) {
+    return {
+        type: Type.RoomFind,
+        Checkin: Checkin,
+        Checkout: Checkout,
+        RoomType: RoomType
+    }
+}

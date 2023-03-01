@@ -19,14 +19,15 @@ export default function Walkin() {
     console.log(state)
     const navigate = useNavigate()
     let RoomType = ""
+    // const RoomList = []
     const RoomList = GetRoomList()
     const dispatch = useDispatch()
     const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
     const [Rate, setRate] = useState(Number(SeltdRomTy.rate))
-    const [HandleStayDays, setHandleStayDays] = useState(1);
+    const [HandleStayDays, setHandleStayDays] = useState(0);
     const [PaidAmount, setPaidAmount] = useState(0)
     const [PaymentData, setPaymentData] = useState({})
-    const [Data, setData] = useState({ "checkin": dayjs().startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'), "account": [], "status": "In House", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
+    const [Data, setData] = useState({ "checkin": dayjs().startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().startOf('day').format('YYYY-MM-DD'), "account": [], "status": "In House", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
     const [Adults, setAdults] = useState('')
     const [Child, setChild] = useState('')
     const [TotalPerson, setTotalPerson] = useState(0)
@@ -34,7 +35,7 @@ export default function Walkin() {
     //     return current && current < dayjs().startOf('day');
     // };
     const disabledDate2 = (current) => {
-        return (current) && (current) < dayjs().add(1, 'day').endOf('day');
+        return (current) && (current) < dayjs().startOf('day');
     };
     const TotapDays = () => {
         var d1 = document.getElementById("d1").value
@@ -168,7 +169,7 @@ export default function Walkin() {
                                 <DatePicker
                                     format="YYYY-MM-DD"
                                     disabledDate={disabledDate2}
-                                    defaultValue={dayjs().add(1, 'day').startOf('day')}
+                                    defaultValue={dayjs().startOf('day')}
                                     id="d2"
                                     onChange={TotapDays}
                                 />
