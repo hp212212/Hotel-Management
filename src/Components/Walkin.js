@@ -58,6 +58,9 @@ export default function Walkin() {
     }
     const SelectRoomType = (event) => {
         RoomType = event.target.value
+        // console.log(CheckIn)
+        // console.log(CheckOut)
+        // console.log(event.target.value)
         document.getElementById("RoomNoInput").selectedIndex = 0
         if (RoomType !== "Select Room Type") {
             for (let i = 0; i < RoomList.length; i++) {
@@ -66,13 +69,14 @@ export default function Walkin() {
                     setRate(RoomList[i].rate)
                     setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
                     if (CheckIn < CheckOut) {
-                        dispatch(FindRoomsDispatch(CheckIn, CheckOut, RoomType))
+                        dispatch(FindRoomsDispatch(CheckIn, CheckOut, event.target.value))
                     }
                     break
                 }
             }
+            // console.log(AvailableRooms)
         } else {
-            dispatch(FindRoomsDispatch(CheckIn, CheckOut, RoomType))
+            dispatch(FindRoomsDispatch(CheckIn, CheckOut, event.target.value))
             setSeltdRomTy("")
             setRate(0)
         }

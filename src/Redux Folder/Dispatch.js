@@ -18,11 +18,12 @@ export function PutDispatch(Data, EditId, Url) {
     }
 }
 
-export function FindRoomsDispatch(Checkin, Checkout, RoomType) {
+export function FindRoomsDispatch(Checkin, Checkout, RoomType, SelectedRoom) {
     return {
         type: Type.RoomFind,
         Checkin: Checkin,
         Checkout: Checkout,
-        RoomType: RoomType
+        RoomType: RoomType,
+        SelectedRoom: SelectedRoom
     }
 }

@@ -41,13 +41,14 @@ export function FindRooms(state = defultRooms, action) {
             const date2 = dayjs(action.Checkout)
             let TotalDays = date2.diff(date1, 'day')
             let CheckDay = ''
+            state = Rooms
             for (let j of kaka) {
                 if ((j.status === "Reservation" || j.status === "In House") && j.roomtype === action.RoomType) {
                     for (let i = 0; i < TotalDays; i++) {
                         CheckDay = date1.add(i, 'day').format('YYYY-MM-DD')
                         if (CheckDay >= j.checkin && CheckDay < j.checkout) {
                             for (let k = 0; k < Rooms.length; k++) {
-                                if (Rooms[k] === j.roomno) {
+                                if (Rooms[k] === j.roomno && Rooms[k]!==action.SelectedRoom) {
                                     Rooms.splice(k, 1)
                                 }
                             }

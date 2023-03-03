@@ -8,7 +8,7 @@ import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
-import { PutDispatch } from '../Redux Folder/Dispatch';
+import { PutDispatch, FindRoomsDispatch } from '../Redux Folder/Dispatch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
 import TableDisplay from './TableDisplay';
@@ -22,7 +22,6 @@ export default function Inhouse() {
     let kakaid = {}
     const { id } = useParams()
     for (let i = 0; i < kaka.length; i++) {
-        // console.log(id)
         if (Number(id) === kaka[i].id) {
             kakaid = kaka[i]
             break
@@ -33,6 +32,10 @@ export default function Inhouse() {
     for (let i = 0; i < Reservation.account.length; i++) {
         EarlyPaidAmount = EarlyPaidAmount + Number(Reservation.account[i].amount)
     }
+    const AvailableRooms = useSelector((state) => state.FindRooms)
+    const [CheckIn, setCheckIn] = useState(Reservation.checkin)
+    const [CheckOut, setCheckOut] = useState(Reservation.checkout)
+    const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
     const RoomList = GetRoomList()
     // const RoomList = []
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
@@ -47,11 +50,12 @@ export default function Inhouse() {
     const [RoomNoFlex2, setRoomNoFlex2] = useState("d-none")
     const [RateEditBtn, setRateEditBtn] = useState("")
     const ChangeRoomNoFlex = () => {
+        dispatch(FindRoomsDispatch(CheckIn, CheckOut, Reservation.roomtype, ReservedRoom))
         setRoomNoFlex1("d-none")
         setRoomNoFlex2("")
-        for (let i = 0; i < RoomList.length; i++) {
-            if (Reservation.roomno === RoomList[Number(ggg)].rooms[i]) {
-                document.getElementById("RoomNoInput").selectedIndex = i
+        for (let i = 0; i < AvailableRooms.length; i++) {
+            if (ReservedRoom === AvailableRooms[i]) {
+                document.getElementById("RoomNoInput").selectedIndex = i + 1
             }
         }
     }
@@ -73,8 +77,17 @@ export default function Inhouse() {
 
         const diff = Math.abs(dateTwo - dateOne)
         const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+        setCheckIn(d1)
+        setCheckOut(d2)
         setHandleStayDays(days)
         setReservation({ ...Reservation, "checkin": d1, "checkout": d2, "staydays": days })
+        dispatch(FindRoomsDispatch(d1, d2, Reservation.roomtype, ReservedRoom))
+    }
+    const SelectRoomRate = (event) => {
+        if (event.target.value !== "Select Room") {
+            setReservation({ ...Reservation, "roomno": Number(event.target.value) })
+            // setReservedRoom(Number(event.target.value))
+        }
     }
     const StatusChange = (event) => {
         if (event.target.value === "Check Out" && now < Reservation.checkout) {
@@ -237,13 +250,18 @@ export default function Inhouse() {
                                 <Form.Control type="text" disabled value={Reservation.roomno} />
                                 <InputGroup.Text ><FaEdit type='button' title="Edit" onClick={ChangeRoomNoFlex} /></InputGroup.Text>
                             </InputGroup>
-                            <Form.Select className={`mb-1 ${RoomNoFlex2}`} id="RoomNoInput" onChange={(event) => { setReservation({ ...Reservation, "roomno": Number(event.target.value) }) }}>
-                                {
-                                    SeltdRomTy.rooms.map((res, index) => {
-                                        return <option value={res}>{res}</option>
-                                    })
-                                }
-                            </Form.Select>
+                            <InputGroup className={`mb-1 ${RoomNoFlex2}`} >
+                                <InputGroup.Text>Room</InputGroup.Text>
+                                <Form.Select id="RoomNoInput" onChange={(event) => SelectRoomRate(event)}>
+                                    <option value="Select Room">Select Room</option>
+                                    {
+                                        AvailableRooms !== "" ?
+                                            (AvailableRooms.map((res, index) => {
+                                                return <option value={res}>{res}</option>
+                                            })) : null
+                                    }
+                                </Form.Select>
+                            </InputGroup>
                         </Col>
 
                         <Col md={3}>

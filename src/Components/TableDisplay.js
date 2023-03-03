@@ -14,7 +14,6 @@ export default function TableDisplay(Props) {
     //         break
     //     }
     // }
-    // console.log(Reservation)
     // const datepast = dayjs(Reservation.checkin)
     // const datenow = dayjs(dayjs().format("YYYY-MM-DD"))
     // let TotalStayDays = datenow.diff(datepast, 'day')
