@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { GetRoomList, PostMainDataApi, PutMainDataApi } from "../Server/Services";
+import { GetMainDataApi, GetRoomList, PostMainDataApi, PutMainDataApi } from "../Server/Services";
 import { Type } from "./ActionType";
 import { defultMainDataApiData, defultRooms } from "./InitialState";
 import dayjs from 'dayjs'
@@ -26,12 +26,12 @@ export function MainReduser(state = defultMainDataApiData, action) {
     }
 }
 export function FindRooms(state = defultRooms, action) {
-    const kaka = defultMainDataApiData
+    const kaka = GetMainDataApi()
     const RoomList = GetRoomList()
     // const RoomList = []
     switch (action.type) {
         case Type.RoomFind:
-            let Rooms = []
+            let Rooms = ""
             for (let i of RoomList) {
                 if (action.RoomType === i.type) {
                     Rooms = i.rooms
@@ -55,6 +55,9 @@ export function FindRooms(state = defultRooms, action) {
                             break
                         }
                     }
+                }
+                else {
+                    state = Rooms
                 }
             }
             return state;

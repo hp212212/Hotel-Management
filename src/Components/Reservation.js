@@ -9,25 +9,27 @@ import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
 import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
-import { PostDispatch } from '../Redux Folder/Dispatch';
+import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
 // import moment from 'moment';
 
 export default function Reservation() {
     let now = dayjs().format('YYYY-MM-DD')
     const state = useSelector((state) => state.MainReduser)
-    console.log(state)
+    const AvailableRooms = useSelector((state) => state.FindRooms)
+    const [CheckIn, setCheckIn] = useState(dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'))
+    const [CheckOut, setCheckOut] = useState(dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'))
     const navigate = useNavigate()
     let RoomType = ""
     const RoomList = GetRoomList()
     // const RoomList = []
     const dispatch = useDispatch()
-    const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[0])
-    const [Rate, setRate] = useState(Number(SeltdRomTy.rate))
+    const [Data, setData] = useState({ "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "Reservation" })
+    const [SeltdRomTy, setSeltdRomTy] = useState("")
+    const [Rate, setRate] = useState(0)
     const [HandleStayDays, setHandleStayDays] = useState(0);
     const [PaidAmount, setPaidAmount] = useState(0)
     const [PaymentData, setPaymentData] = useState({})
-    const [Data, setData] = useState({ "checkin": dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'), "checkout": dayjs().add(2, 'day').startOf('day').format('YYYY-MM-DD'), "account": [], "status": "Reservation", "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
     const [Adults, setAdults] = useState(0)
     const [Child, setChild] = useState(0)
     const [TotalPerson, setTotalPerson] = useState(0)
@@ -44,25 +46,48 @@ export default function Reservation() {
         const dateTwo = new Date(d2)
         const diff = Math.abs(dateTwo - dateOne)
         const days = Math.ceil(diff / (1000 * 60 * 60 * 24))
+        setCheckIn(d1)
+        setCheckOut(d2)
         if ((dateOne < dateTwo)) {
             setHandleStayDays(days)
             setData({ ...Data, "checkin": d1, "checkout": d2, "staydays": days })
+            if (SeltdRomTy !== "") {
+                dispatch(FindRoomsDispatch(d1, d2, SeltdRomTy.type))
+            } else {
+                dispatch(FindRoomsDispatch(d1, d2, ""))
+            }
         } else {
             setHandleStayDays(0)
+            dispatch(FindRoomsDispatch(d1, d2, ""))
         }
     }
     const SelectRoomType = (event) => {
         RoomType = event.target.value
-        document.getElementById("RoomNoInput").selectedIndex = 1
-        for (let i = 0; i < RoomList.length; i++) {
-            if (RoomType === RoomList[i].type) {
-                setSeltdRomTy(RoomList[i])
-                setRate(RoomList[i].rate)
-                setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
-                break
+        document.getElementById("RoomNoInput").selectedIndex = 0
+        if (RoomType !== "Select Room Type") {
+            for (let i = 0; i < RoomList.length; i++) {
+                if (RoomType === RoomList[i].type) {
+                    setSeltdRomTy(RoomList[i])
+                    setRate(RoomList[i].rate)
+                    setData({ ...Data, "roomtype": RoomList[i].type, "roomfacility": RoomList[i].facility, "roomno": RoomList[i].rooms[0], "rate": RoomList[i].rate })
+                    if (CheckIn < CheckOut) {
+                        dispatch(FindRoomsDispatch(CheckIn, CheckOut, RoomType))
+                    }
+                    break
+                }
             }
+        } else {
+            dispatch(FindRoomsDispatch(CheckIn, CheckOut, RoomType))
+            setSeltdRomTy("")
+            setRate(0)
         }
+    }
+    const SelectRoomRate = (event) => {
+        if (event.target.value !== "Select Room") {
+            setData({ ...Data, "roomno": Number(event.target.value) })
+        } else {
 
+        }
     }
     useEffect(() => {
         setTotalPerson(Number(Adults) + Number(Child))
@@ -89,13 +114,17 @@ export default function Reservation() {
             document.getElementById("TotalAdults").focus()
         } else if (HandleStayDays === 0) {
             alert("Please Add Some Days")
+        } else if (SeltdRomTy === "") {
+            alert("Please Select Room Type")
+        } else if (document.getElementById("RoomNoInput").value === "Select Room") {
+            alert("Please Select Room")
         } else {
             let AddId = 1;
             if (state.length > 0) {
                 AddId = state[state.length - 1].id + 1
             }
             dispatch(PostDispatch(Data, AddId, "MainDataApi"))
-            setData({ "roomtype": "NQ1", "roomfacility": SeltdRomTy.facility, "roomno": SeltdRomTy.rooms[0], "rate": SeltdRomTy.rate })
+            setData({ "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "Reservation" })
             document.getElementById("MainForm").reset()
             navigate("/Home")
         }
@@ -203,6 +232,7 @@ export default function Reservation() {
                             <InputGroup className="mb-1" >
                                 <InputGroup.Text>Room Type</InputGroup.Text>
                                 <Form.Select required onChange={(event) => SelectRoomType(event)}>
+                                    <option value="Select Room Type">Select Room Type</option>
                                     {
                                         RoomList.map((res, index) => {
                                             return <option value={res.type}>{res.type}</option>
@@ -218,13 +248,18 @@ export default function Reservation() {
                             </InputGroup>
                         </Col>
                         <Col md={3}>
-                            <Form.Select className="mb-1" id="RoomNoInput" onChange={(event) => { setData({ ...Data, "roomno": Number(event.target.value) }) }}>
-                                {
-                                    SeltdRomTy.rooms.map((res, index) => {
-                                        return <option value={res}>{res}</option>
-                                    })
-                                }
-                            </Form.Select>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room No.</InputGroup.Text>
+                                <Form.Select id="RoomNoInput" onChange={(event) => SelectRoomRate(event)}>
+                                    <option value="Select Room">Select Room</option>
+                                    {
+                                        AvailableRooms !== "" ?
+                                            (AvailableRooms.map((res, index) => {
+                                                return <option value={res}>{res}</option>
+                                            })) : null
+                                    }
+                                </Form.Select>
+                            </InputGroup>
                         </Col>
 
 
