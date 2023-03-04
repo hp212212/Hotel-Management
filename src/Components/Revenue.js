@@ -1,57 +1,30 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, InputGroup, Button } from 'react-bootstrap'
+import { Container, Row, Col, InputGroup, Button, Form, Modal, Stack } from 'react-bootstrap'
 import { DatePicker, Table } from 'antd';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 
 export default function Revenue() {
+    const [show, setShow] = useState(false);
+    // const handleClose = () => setShow(false);
+    // const handleShow = () => setShow(true);
     const state = useSelector((state) => state.MainReduser)
     var now = dayjs().format('YYYY-MM-DD')
     const [StartDate, setStartDate] = useState(dayjs().endOf('day').format('YYYY-MM-DD'))
     const [EndDate, setEndDate] = useState(dayjs().endOf('day').format('YYYY-MM-DD'))
     let [RevenueList, setRevenueList] = useState([])
-    let Total = 0
-    // const disabledDate = (current) => {
-    //     return (current) && (current) > dayjs().endOf('day');
-    // };
+    let [Total, setTotal] = useState(0)
     const TotalDays = () => {
         let d1 = document.getElementById("d1").value
         let d2 = document.getElementById("d2").value
         setStartDate(d1)
         setEndDate(d2)
     }
-    const FinalSubmit = () => {
-        Total = 0
-        RevenueList = []
-        if (StartDate >= EndDate) {
-            setRevenueList([])
-            alert("Start Date must be LESS THEN End Date")
-        } else {
-            // const date1 = dayjs(StartDate)
-            // const date2 = dayjs(EndDate)
-            // let TotalDays = date2.diff(date1, 'day')
-            let Update = {}
-            for (let i of state) {
-                for (let k = 0; k < i.account.length; k++) {
-                    if (StartDate <= i.account[k].date && i.account[k].date <= EndDate) {
-                        Update["Date"] = i.account[k].date
-                        Update["RoomType"] = i.roomtype
-                        Update["Payment"] = i.account[k].amount
-                        Update["RoomNo"] = i.roomno
-                        Update["PaymentMethod"] = i.account[k].paymentmethod
-                        Update["fname"] = i.fname
-                        Total = parseInt(Total) + (parseInt(i.account[k].amount) + (parseInt(i.account[k].amount) * 0.09)).toFixed(2)
-                        console.log(Total)
-                        RevenueList.push(Update)
-                        setRevenueList(RevenueList)
-                        Update = {}
-                    }
-                }
-            }
-        }
-    }
     const columns = [
         {
+            title: 'No.',
+            dataIndex: 'No',
+        }, {
             title: 'Date',
             dataIndex: 'Date',
         },
@@ -79,12 +52,74 @@ export default function Revenue() {
         }
     ];
     const data = [];
+    const FindByDate = () => {
+        Total = 0
+        RevenueList = []
+        if (StartDate >= EndDate) {
+            setRevenueList([])
+            alert("Start Date must be LESS THEN End Date")
+            setTotal(0)
+        } else {
+            let Update = {}
+            for (let i of state) {
+                for (let k = 0; k < i.account.length; k++) {
+                    if (StartDate <= i.account[k].date && i.account[k].date <= EndDate) {
+                        Update["Date"] = i.account[k].date
+                        Update["RoomType"] = i.roomtype
+                        Update["Payment"] = i.account[k].amount
+                        Update["RoomNo"] = i.roomno
+                        Update["PaymentMethod"] = i.account[k].paymentmethod
+                        Update["fname"] = i.fname
+                        Total = Total + i.account[k].amount + (i.account[k].amount) * 0.09
+                        Total = Number(Math.round(Total + 'e2') + 'e-2')
+                        // Total = parseInt(Total) + (parseInt(i.account[k].amount) + (parseInt(i.account[k].amount) * 0.09)).toFixed(2)
+                        setTotal(Total)
+                        RevenueList.push(Update)
+                        setRevenueList(RevenueList)
+                        Update = {}
+                    }
+                }
+            }
+            setShow(true)
+        }
+    }
+    const handleDate = () => {
+        setShow(false)
+        RevenueList
+            .sort((a, b) => a.Date > b.Date ? 1 : -1)
+        console.log(RevenueList)
+        setRevenueList(RevenueList)
+    }
+    const handleRoomType = () => {
+        setShow(false)
+        RevenueList
+            .sort((a, b) => a.RoomType > b.RoomType ? 1 : -1)
+        console.log(RevenueList)
+        setRevenueList(RevenueList)
+    }
+    const handlePaymentMethod = () => {
+        setShow(false)
+        RevenueList
+            .sort((a, b) => a.PaymentMethod > b.PaymentMethod ? 1 : -1)
+        console.log(RevenueList)
+        setRevenueList(RevenueList)
+    }
+    const handleRoomNo = () => {
+        setShow(false)
+        RevenueList
+            .sort((a, b) => a.RoomNo > b.RoomNo ? 1 : -1)
+        console.log(RevenueList)
+        setRevenueList(RevenueList)
+    }
+    const FindByRoom = () => {
+
+    }
     // RevenueList.sort(function (a, b) {
     //     if (a.Payment > b.Payment) return 1;
     //     if (a.Payment < b.Payment) return 1;
     //     return 0;
     // })
-    console.log(RevenueList)
+    // console.log(RevenueList)
     // for (let i = 0; i < RevenueList.length; i++) {
     //     data.push({
     //         key: i,
@@ -97,11 +132,11 @@ export default function Revenue() {
     //     })
     // }
     RevenueList
-        .sort((a, b) => a.Date > b.Date ? 1 : -1)
         .map((res, index) => {
             return (
                 data.push({
                     key: index,
+                    No: index + 1,
                     Date: res.Date,
                     RoomType: res.RoomType,
                     RoomNo: res.RoomNo,
@@ -113,11 +148,10 @@ export default function Revenue() {
         })
     return (
         <>
-
             <Container>
                 <Row>
                     <Col lg={4}>
-                        <InputGroup className="m-2">
+                        <InputGroup className="m-1">
                             <InputGroup.Text >Start Date</InputGroup.Text>
                             <InputGroup.Text >
                                 <DatePicker
@@ -149,7 +183,7 @@ export default function Revenue() {
                         </InputGroup>
                     </Col>
                     <Col lg={4}>
-                        <InputGroup className="m-2">
+                        <InputGroup className="m-1">
                             <InputGroup.Text >End Date</InputGroup.Text>
                             <InputGroup.Text >
                                 <DatePicker
@@ -164,15 +198,47 @@ export default function Revenue() {
                         </InputGroup>
                     </Col>
                     <Col lg={4}>
-                        <Button variant="outline-success" className="w-100 mt-2 mb-2" onClick={FinalSubmit}>Success</Button>
+                        <Button variant="outline-success" className="w-100 mt-2 mb-1" onClick={FindByDate}>Total Revenue</Button>
+                    </Col>
+                    <Col md={{ span: 6, offset: 6 }}>
+                        <InputGroup className="m-1">
+                            <InputGroup.Text >Total Revenue</InputGroup.Text>
+                            <Form.Control value={Total} disabled className="bg-warning fw-bold text-danger fs-4" />
+                            <InputGroup.Text >CAD $</InputGroup.Text>
+                        </InputGroup>
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={12} className='bg-success pt-3'>
-                        <Table columns={columns} dataSource={data} size="small" />
+                    <Col xs={12} className='bg-success pt-3' >
+                        <Table columns={columns} dataSource={data} size="small" style={{ minHeight: "70vh" }}/>
                     </Col>
                 </Row>
             </Container>
+
+            <Modal
+                show={show}
+                onHide={handleDate} 
+                backdrop="static"
+                keyboard={false}
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>Filter By</Modal.Title>
+                </Modal.Header>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleDate}>
+                        Date
+                    </Button>
+                    <Button variant="primary" onClick={handleRoomType}>
+                        Room Type
+                    </Button>
+                    <Button variant="primary" onClick={handlePaymentMethod}>
+                        Payment Method
+                    </Button>
+                    <Button variant="primary" onClick={handleRoomNo}>
+                        Room Number
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

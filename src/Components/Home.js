@@ -75,7 +75,7 @@ export default function Home() {
                                     <RiReservedFill className="underNabBariconsItems" title="Reservation" />
                                 </Nav.Link>
                                 <Nav.Link as={NavLink} to={`${location.pathname}/Revenue`}>
-                                    <GiTakeMyMoney className="underNabBariconsItems" title="Revenue"/>
+                                    <GiTakeMyMoney className="underNabBariconsItems" title="Revenue" />
                                 </Nav.Link>
                                 <Nav.Link as={NavLink} to={"/Inhouse"}>
                                     <FaChrome className="underNabBariconsItems" />
@@ -87,42 +87,44 @@ export default function Home() {
                             <div className="MiddlePart">
                                 {
                                     // eslint-disable-next-line array-callback-return
-                                    List.map((res, index) => {
-                                        const { fname, roomno, staydays, roomtype, checkout, checkin,id } = res;
-                                        // eslint-disable-next-line no-lone-blocks
-                                        {
-                                            if (now >= checkin && now <= checkout && "In House" === res.status) {
-                                                return (
-                                                    <div className="MiddleItemsdesign" >
-                                                        <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${id}`} className="MiddleItems" title={fname}>
-                                                            <div className="MiddleItems1">
-                                                                <BsFillPersonCheckFill className="MiddleItems11" title={`In House`} />
-                                                                <div className="MiddleItems12" key={roomno} title={`${roomno}`}>
-                                                                    {roomno}
+                                    List
+                                        .sort((a, b) => a.roomno > b.roomno ? 1 : -1)
+                                        .map((res, index) => {
+                                            const { fname, roomno, staydays, roomtype, checkout, checkin, id } = res;
+                                            // eslint-disable-next-line no-lone-blocks
+                                            {
+                                                if (now >= checkin && now <= checkout && "In House" === res.status) {
+                                                    return (
+                                                        <div className="MiddleItemsdesign" >
+                                                            <Nav.Link as={NavLink} to={`${location.pathname}/Inhouse/${id}`} className="MiddleItems" title={fname}>
+                                                                <div className="MiddleItems1">
+                                                                    <BsFillPersonCheckFill className="MiddleItems11" title={`In House`} />
+                                                                    <div className="MiddleItems12" key={roomno} title={`${roomno}`}>
+                                                                        {roomno}
+                                                                    </div>
+                                                                    <div className="MiddleItems13" key={fname} title={`In Person`}>
+                                                                        {fname}
+                                                                    </div>
                                                                 </div>
-                                                                <div className="MiddleItems13" key={fname} title={`In Person`}>
-                                                                    {fname}
+                                                                <div className="MiddleItems2">
+                                                                    <div className="MiddleItems21">
+                                                                        <div key={staydays} title={`${staydays} Days To Go`}>{staydays} Days</div>
+                                                                        <div key={roomtype} title={`Room Type`}>{roomtype}</div>
+                                                                    </div>
+                                                                    <div className="MiddleItems22"><MdOutlineFamilyRestroom className="FamilyIcon" />
+                                                                    </div>
+                                                                    <div className="MiddleItems23"  >
+                                                                        <TbDoorExit key={checkout} style={{ color: "red" }} className="me-1" title={`Check Out Date`} />
+                                                                        <div title={`Check Out Date`}>{checkout}</div>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            <div className="MiddleItems2">
-                                                                <div className="MiddleItems21">
-                                                                    <div key={staydays} title={`${staydays} Days To Go`}>{staydays} Days</div>
-                                                                    <div key={roomtype} title={`Room Type`}>{roomtype}</div>
-                                                                </div>
-                                                                <div className="MiddleItems22"><MdOutlineFamilyRestroom className="FamilyIcon"/>
-                                                                </div>
-                                                                <div className="MiddleItems23"  >
-                                                                    <TbDoorExit key={checkout} style={{ color: "red" }} className="me-1" title={`Check Out Date`} />
-                                                                    <div title={`Check Out Date`}>{checkout}</div>
-                                                                </div>
-                                                            </div>
-                                                        </Nav.Link>
-                                                    </div>
-                                                )
+                                                            </Nav.Link>
+                                                        </div>
+                                                    )
+                                                }
                                             }
-                                        }
 
-                                    })
+                                        })
                                 }
                             </div>
                         </Col>
