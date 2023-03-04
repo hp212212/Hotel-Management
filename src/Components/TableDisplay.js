@@ -1,23 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from 'antd';
-import { useSelector } from 'react-redux';
-import dayjs from 'dayjs'
 import '../Css/TableDisplay.css'
 
 export default function TableDisplay(Props) {
     let Dataaa = Props.res
-    // const state = useSelector((state) => state.MainReduser)
-    // let Reservation = {}
-    // for (let i = 0; i < state.length; i++) {
-    //     if (Number(dada) === state[i].id) {
-    //         Reservation = state[i]
-    //         break
-    //     }
-    // }
-    // const datepast = dayjs(Reservation.checkin)
-    // const datenow = dayjs(dayjs().format("YYYY-MM-DD"))
-    // let TotalStayDays = datenow.diff(datepast, 'day')
-    // // const [Reservation, setReservation] = useState(kaka)
     const columns = [
         {
             title: 'Date',

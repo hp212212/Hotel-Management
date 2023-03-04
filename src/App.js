@@ -12,6 +12,7 @@ import Walkin from './Components/Walkin';
 import Reservation from './Components/Reservation';
 import ReservationInhouse from './Components/ReservationInhouse';
 import Extra from './Components/Extra';
+import Revenue from './Components/Revenue';
 const Home = React.lazy(() => import('./Components/Home.js'));
 const Inhouse = React.lazy(() => import('./Components/Inhouse.js'));
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Extra" element={<Extra />} />
             <Route exact path="/Home/Walkin" element={<Walkin />} />
             <Route exact path="/Home/Reservation" element={<Reservation />} />
+            <Route exact path="/Home/Revenue" element={<Revenue />} />
             <Route exact path="/Home/Inhouse/:id" element={<Inhouse />} />
             <Route exact path="/Home/ReservationInhouse/:id" element={<ReservationInhouse />} />
           </Routes>

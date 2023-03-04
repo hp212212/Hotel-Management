@@ -6,6 +6,8 @@ import { TbDoorExit } from 'react-icons/tb';
 import { ImEnter } from 'react-icons/im';
 import { RiReservedFill } from 'react-icons/ri';
 import { MdOutlineFamilyRestroom } from 'react-icons/md';
+import { GiTakeMyMoney } from 'react-icons/gi';
+
 
 import { FaChrome } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
@@ -72,8 +74,8 @@ export default function Home() {
                                 <Nav.Link as={NavLink} to={`${location.pathname}/Reservation`}>
                                     <RiReservedFill className="underNabBariconsItems" title="Reservation" />
                                 </Nav.Link>
-                                <Nav.Link as={NavLink} to={"/Inhouse"}>
-                                    <FaChrome className="underNabBariconsItems" />
+                                <Nav.Link as={NavLink} to={`${location.pathname}/Revenue`}>
+                                    <GiTakeMyMoney className="underNabBariconsItems" title="Revenue"/>
                                 </Nav.Link>
                                 <Nav.Link as={NavLink} to={"/Inhouse"}>
                                     <FaChrome className="underNabBariconsItems" />
