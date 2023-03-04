@@ -2,14 +2,25 @@
   "MainDataApi": [
     {
       "checkin": "2023-03-03",
-      "checkout": "2023-03-10",
-      "account": [],
+      "checkout": "2023-03-06",
+      "account": [
+        {
+          "paymentmethod": "Master Card",
+          "amount": 50.5,
+          "date": "2023-03-04"
+        },
+        {
+          "paymentmethod": "Visa Card",
+          "amount": 20.2,
+          "date": "2023-03-05"
+        }
+      ],
       "status": "In House",
       "fname": "1 Hitesh",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
       "email": "hp212212@gmail.com",
-      "staydays": 7,
+      "staydays": 3,
       "adults": 2,
       "childs": 1,
       "roomtype": "NK1",
@@ -20,93 +31,79 @@
     },
     {
       "checkin": "2023-03-03",
-      "checkout": "2023-03-07",
-      "account": [],
+      "checkout": "2023-03-09",
+      "account": [
+        {
+          "paymentmethod": "Debit Card",
+          "amount": 125.25,
+          "date": "2023-03-05"
+        },
+        {
+          "paymentmethod": "Cash",
+          "amount": 110,
+          "date": "2023-03-09"
+        }
+      ],
       "status": "In House",
       "fname": "2 Hitesh",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
+      "email": "mp212212@gmail.com",
+      "adults": 2,
+      "childs": 1,
+      "staydays": 6,
+      "roomtype": "NQQ1",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 125,
+      "rate": 125,
+      "id": 2
+    },
+    {
+      "checkin": "2023-03-04",
+      "checkout": "2023-03-07",
+      "account": [
+        {
+          "paymentmethod": "Master Card",
+          "amount": 120,
+          "date": "2023-03-04"
+        },
+        {
+          "paymentmethod": "Debit Card",
+          "amount": 102,
+          "date": "2023-03-06"
+        }
+      ],
+      "status": "Reservation",
+      "fname": "3 Hitesh",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "sdfsiodfk@gmail.com",
+      "staydays": 3,
+      "adults": 2,
+      "childs": 1,
+      "roomtype": "NQQ1",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 129,
+      "rate": 125,
+      "id": 3
+    },
+    {
+      "checkin": "2023-03-07",
+      "checkout": "2023-03-11",
+      "account": [],
+      "status": "Reservation",
+      "fname": "4 Hitesh",
       "staydays": 4,
       "adults": 2,
       "childs": 1,
       "roomtype": "NK1",
       "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
       "roomno": 120,
-      "rate": 90,
-      "id": 2
-    },
-    {
-      "checkin": "2023-03-05",
-      "checkout": "2023-03-09",
-      "account": [],
-      "status": "Reservation",
-      "fname": "3 Hitesh",
+      "rate": 100,
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
-      "staydays": 4,
-      "adults": 2,
-      "childs": 1,
-      "roomtype": "NK1",
-      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
-      "roomno": 118,
-      "rate": 90,
-      "id": 3
-    },
-    {
-      "checkin": "2023-03-07",
-      "checkout": "2023-03-10",
-      "account": [],
-      "status": "Reservation",
-      "fname": "4 Hitesh",
-      "address": "5018 1 Avenue",
-      "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
-      "staydays": 3,
-      "adults": 2,
-      "childs": 1,
-      "roomtype": "NK1",
-      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
-      "roomno": 204,
-      "rate": 90,
+      "email": "mp212212@gmail.com",
       "id": 4
-    },
-    {
-      "checkin": "2023-03-03",
-      "checkout": "2023-03-09",
-      "account": [],
-      "status": "In House",
-      "fname": "5 Hitesh",
-      "address": "5018 1 Avenue",
-      "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
-      "staydays": 6,
-      "adults": 2,
-      "childs": 1,
-      "roomtype": "NQQ1",
-      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
-      "roomno": 125,
-      "rate": 125,
-      "id": 5
-    },
-    {
-      "checkin": "2023-03-03",
-      "checkout": "2023-03-11",
-      "account": [],
-      "status": "In House",
-      "fname": "6 Hitesh",
-      "address": "5018 1 Avenue",
-      "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
-      "staydays": 5,
-      "adults": 2,
-      "childs": 1,
-      "roomtype": "NQQ1",
-      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
-      "roomno": 130,
-      "rate": 250,
-      "id": 6
     }
   ],
   "RoomList": [
