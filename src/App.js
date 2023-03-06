@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import Header from './Components/Header';
+import Header1 from './Components/Header1';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Footer from './Components/Footer';
 import { Routes, Route } from 'react-router-dom'
@@ -19,8 +20,8 @@ const Inhouse = React.lazy(() => import('./Components/Inhouse.js'));
 function App() {
   return (
     <>
-      <Header />
-      <Provider store={store}>
+      <Header1 />
+      {/* <Provider store={store}>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Image />} />
@@ -34,7 +35,7 @@ function App() {
           </Routes>
         </Suspense>
       </Provider>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }
