@@ -17,7 +17,7 @@ export default function Header1() {
       setWrapper("wrapper active-popup")
     }
   }
-  const MainClose=()=>{
+  const MainClose = () => {
     setWrapper("wrapper")
   }
   return (

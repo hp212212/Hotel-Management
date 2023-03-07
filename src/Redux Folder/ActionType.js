@@ -3,5 +3,7 @@ export const Type = {
     VIEW: "VIEW",
     EDIT: "EDIT",
     DEL: "DEL",
-    RoomFind: "RoomFind"
+    RoomFind: "RoomFind",
+    UserAdd:"UserAdd",
+    UserEdit:"UserEdit",
 }

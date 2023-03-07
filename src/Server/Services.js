@@ -45,3 +45,15 @@ export const PostReservation = (Data, url) => {
         return err;
     })
 }
+export const GetUsers = () => {
+    let xxx = []
+    $.ajax({
+        url: 'http://localhost:5000/Users',
+        type: "GET",
+        async: false,
+        success: function (abc) { xxx = abc },
+        error: function (err) { }
+    })
+    return xxx;
+
+}

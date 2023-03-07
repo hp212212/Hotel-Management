@@ -42,9 +42,19 @@
           "paymentmethod": "Debit Card",
           "amount": 102,
           "date": "2023-03-06"
+        },
+        {
+          "paymentmethod": "Debit Card",
+          "amount": 222,
+          "date": "2023-03-07"
+        },
+        {
+          "paymentmethod": "Cash",
+          "amount": -35.25,
+          "date": "2023-03-07"
         }
       ],
-      "status": "In House",
+      "status": "Check Out",
       "fname": "3 Hitesh",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
@@ -90,8 +100,14 @@
     {
       "checkin": "2023-03-07",
       "checkout": "2023-03-11",
-      "account": [],
-      "status": "Reservation",
+      "account": [
+        {
+          "paymentmethod": "Master Card",
+          "amount": 205,
+          "date": "2023-03-07"
+        }
+      ],
+      "status": "In House",
       "fname": "4 Hitesh",
       "staydays": 4,
       "adults": 2,
@@ -279,5 +295,7 @@
       ],
       "id": 10
     }
-  ]
+  ],
+  "Admins": [],
+  "Users": []
 }

@@ -13,7 +13,7 @@ export default function Header() {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className="p-0" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav ><Nav.Link as={NavLink} to={"/Home"} className="ms-5 navlink" style={{ fontWeight: "bold" }} >Home</Nav.Link></Nav>
-            <Nav><Nav.Link as={NavLink} to={"/Extra"} className=" navlink" style={{ fontWeight: "bold" }}>Extra</Nav.Link></Nav>
+            <Nav><Nav.Link as={NavLink} to={"/Loginn"} className=" navlink" style={{ fontWeight: "bold" }}>Login</Nav.Link></Nav>
             {/* <Nav><Nav.Link as={NavLink} to={"/Home"} className=" navlink" style={{ fontWeight: "bold" }}>Transections</Nav.Link></Nav> */}
           </Navbar.Collapse>
         </Container>

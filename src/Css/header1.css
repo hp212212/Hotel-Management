@@ -4,7 +4,16 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../Images/background.jpg   ') no-repeat;
+    background-size: cover;
+    background-position: center;
+} */
+.Main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,11 +90,10 @@ header {
     color: #162938;
 }
 
-.wrapper,
-.wrapper1 {
+.wrapper {
     position: relative;
     width: 400px;
-    height: 440px;
+    height: 420px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.815);
     border-radius: 20px;
@@ -95,15 +103,16 @@ header {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transition: transform 0.5s ease ,height 0.2s ease;
+    transition: transform 0.5s ease, height 0.2s ease;
     transform: scale(0);
 }
-.wrapper.active-popup{
+
+.wrapper.active-popup {
     transform: scale(1);
 }
 
 .wrapper.active {
-    height: 480px;
+    height: 460px;
     transform: scale(1);
 }
 
@@ -207,7 +216,7 @@ header {
     font-weight: 500;
     margin: -15px 0 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-evenly;
 }
 
 .remember-forgot label input {
@@ -215,12 +224,12 @@ header {
     margin-right: 3px;
 }
 
-.remember-forgot a {
+.remember-forgot label {
     color: #162938;
     text-decoration: none;
 }
 
-.remember-forgot a:hover {
+.remember-forgot label:hover {
     text-decoration: underline;
 }
 
