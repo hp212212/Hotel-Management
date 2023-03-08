@@ -6,9 +6,16 @@ import { MdOutlineClose } from 'react-icons/md'
 import { FaUserCheck } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { UidContext } from '../App'
+import { useSelector, useDispatch } from 'react-redux'
+import { PostUsersDispatch } from '../Redux Folder/Dispatch'
 
 export default function Loginn() {
+  const Users = useSelector((state) => state.UsersReduser)
+  const state = useSelector((state) => state.MainReduser)
+  const dispatch = useDispatch()
   const { uid, setUid } = useContext(UidContext)
+  const [DataRegister, setDataRegister] = useState({})
+  const [DataLogin, setDataLogin] = useState({})
   const [LoginChecked, setLoginChecked] = useState("")
   const [wrapper, setWrapper] = useState("wrapper active-popup")
   const ChangeChange = (event) => {
@@ -25,14 +32,41 @@ export default function Loginn() {
   }
   const LoginSubmit = (event) => {
     event.preventDefault()
-    if (LoginChecked === "") {
+    let lo = -1
+    for (let j of Users) {
+      if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
+        lo = j;
+        break
+      }
+    }
+    if (lo === -1) {
+      alert("UserName or Password Incorrect.")
+    } else if (LoginChecked === "") {
       alert("Please, Select Admin or User")
-    }else{
-      
+    } else if (LoginChecked === "Admin") {
+      alert("Login Successfully Admin")
+    } else {
+      alert("Login Successfully User")
     }
   }
-  const RegisterSubmit = () => {
-
+  const RegisterSubmit = (event) => {
+    event.preventDefault()
+    let lo = -1
+    for (let i of Users) {
+      if (DataRegister.username === i.username || DataRegister.useremail === i.useremail) {
+        lo = i
+        alert("UserName or Email Exists. Please Use new one.")
+        break
+      }
+    }
+    if (lo === -1) {
+      let AddId = 1;
+      if (Users.length > 0) {
+        AddId = Users[Users.length - 1].id + 1
+      }
+      dispatch(PostUsersDispatch(DataRegister, AddId, "Users"));
+      setDataRegister({})
+    }
   }
   return (
     <>
@@ -41,47 +75,47 @@ export default function Loginn() {
           <Link className='icon-close' ><MdOutlineClose value="MainClose" onClick={MainClose} /></Link>
           <div className='form-box login'>
             <h2>login</h2>
-            <form onSubmit={LoginSubmit} >
+            <form onSubmit={LoginSubmit} id="LoginForm">
               <div className='input-box'>
                 <span className='icon'><MdMail /></span>
-                <input type="email" required />
-                <label>Email</label>
+                <input type="text" required value={DataLogin.fname || ""} onChange={(event) => { setDataLogin({ ...DataLogin, "fname": event.target.value }) }} />
+                <label>Username</label>
               </div>
               <div className='input-box'>
                 <span className='icon'><BsFileLockFill /></span>
-                <input type="password" required />
+                <input type="password" required value={DataLogin.pass || ""} onChange={(event) => { setDataLogin({ ...DataLogin, "pass": event.target.value }) }} />
                 <label>Password</label>
               </div>
-              <form className='remember-forgot' >
+              <div className='remember-forgot' >
                 <label><input type="radio" name="logradio" onClick={(event) => setLoginChecked(event.target.value)} checked={LoginChecked === "Admin"} value="Admin" />Admin</label>
                 <label><input type="radio" name="logradio" onClick={(event) => setLoginChecked(event.target.value)} checked={LoginChecked === "User"} value="User" />User</label>
                 {/* <a href="#">Forgot Password</a> */}
-              </form>
+              </div>
               <button type='submit' className='btnnnn' >Login</button>
               <div className='login-register'>
                 <p>Don't have an account?<Link href="#" className='register-link' name="Register" onClick={ChangeChange}>Register</Link></p>
               </div>
             </form>
           </div>
-          <div className='form-box register'>
+          <div className='form-box register' id="RegisterForm">
             <h2>Registration</h2>
             <form onSubmit={RegisterSubmit}>
               <div className='input-box'>
                 <span className='icon'><FaUserCheck /></span>
-                <input type="text" required />
+                <input type="text" required onChange={(event) => { setDataRegister({ ...DataRegister, "username": event.target.value }) }} value={DataRegister.username || ""} />
                 <label>Username</label>
               </div>
               <div className='input-box'>
                 <span className='icon'><MdMail /></span>
-                <input type="email" required />
+                <input type="email" required onChange={(event) => { setDataRegister({ ...DataRegister, "useremail": event.target.value }) }} value={DataRegister.useremail || ""} />
                 <label>Email</label>
               </div>
               <div className='input-box'>
                 <span className='icon'><BsFileLockFill /></span>
-                <input type="password" required />
+                <input type="password" required onChange={(event) => { setDataRegister({ ...DataRegister, "userpass": event.target.value }) }} value={DataRegister.userpass || ""} />
                 <label>Password</label>
               </div>
-              <button type='submit' className='btnnnn'>Reistar</button>
+              <button type='submit' className='btnnnn'>Registar</button>
               <div className='login-register'>
                 <p>Already have an account?<Link href="#" className='login-link' name="Login" onClick={ChangeChange}>Login</Link></p>
               </div>

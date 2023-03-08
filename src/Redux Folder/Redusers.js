@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
-import { GetMainDataApi, GetRoomList, PostMainDataApi, PutMainDataApi } from "../Server/Services";
+import { GetMainDataApi, GetRoomList, PostMainDataApi, PutMainDataApi, PostUsers } from "../Server/Services";
 import { Type } from "./ActionType";
-import { defultMainDataApiData, defultRooms } from "./InitialState";
+import { defultMainDataApiData, defultRooms, defultUsers } from "./InitialState";
 import dayjs from 'dayjs'
 
 
@@ -48,7 +48,7 @@ export function FindRooms(state = defultRooms, action) {
                         CheckDay = date1.add(i, 'day').format('YYYY-MM-DD')
                         if (CheckDay >= j.checkin && CheckDay < j.checkout) {
                             for (let k = 0; k < Rooms.length; k++) {
-                                if (Rooms[k] === j.roomno && Rooms[k]!==action.SelectedRoom) {
+                                if (Rooms[k] === j.roomno && Rooms[k] !== action.SelectedRoom) {
                                     Rooms.splice(k, 1)
                                 }
                             }
@@ -62,6 +62,17 @@ export function FindRooms(state = defultRooms, action) {
                 }
             }
             return state;
+        default:
+            return state;
+    }
+}
+export function UsersReduser(state = defultUsers, action) {
+    switch (action.type) {
+        case Type.UserAdd:
+            PostUsers(action.Load, action.Url);
+            action.Load = { ...action.Load, "id": action.AddId };
+            return [...state, action.Load];
+
         default:
             return state;
     }

@@ -27,3 +27,11 @@ export function FindRoomsDispatch(Checkin, Checkout, RoomType, SelectedRoom) {
         SelectedRoom: SelectedRoom
     }
 }
+export function PostUsersDispatch(Data, AddId, Url) {
+    return {
+        type: Type.UserAdd,
+        Load: Data,
+        AddId: AddId,
+        Url: Url
+    }
+}

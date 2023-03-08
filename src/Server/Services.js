@@ -55,5 +55,22 @@ export const GetUsers = () => {
         error: function (err) { }
     })
     return xxx;
-
+}
+export const GetAdmins = () => {
+    let xxx = []
+    $.ajax({
+        url: 'http://localhost:5000/Admins',
+        type: "GET",
+        async: false,
+        success: function (abc) { xxx = abc },
+        error: function (err) { }
+    })
+    return xxx;
+}
+export const PostUsers = (Data, url) => {
+    return http.post(url, Data).then((response) => {
+        return response;
+    }).catch((err) => {
+        return err;
+    })
 }

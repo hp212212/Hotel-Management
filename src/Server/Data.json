@@ -296,6 +296,26 @@
       "id": 10
     }
   ],
-  "Admins": [],
-  "Users": []
+  "Admins": [
+    {
+      "username": "h",
+      "useremail": "hp212212@gmail.com",
+      "userpass": "123",
+      "id": 1
+    },
+    {
+      "username": "s",
+      "useremail": "sp212212@gmail.com",
+      "userpass": "123",
+      "id": 2
+    }
+  ],
+  "Users": [
+    {
+      "username": "h",
+      "useremail": "hp212212@gmail.com",
+      "userpass": "123",
+      "id": 1
+    }
+  ]
 }
