@@ -21,11 +21,14 @@ export const UidContext = createContext()
 
 function App() {
   const [uid, setUid] = useState(-1)
-  let abc = <Loginn />
+  let element = <Loginn />
+  let path = "/Login"
   if (uid === 0) {
-    abc = <Userss />
+    element = <Userss />
+    path="/MyAccount"
   } else if (uid === 1) {
-    abc = <Home />
+    element = <Home />
+    path="/Home"
   }
 
   return (
@@ -37,8 +40,8 @@ function App() {
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Image />} />
-              <Route path="/Home" element={abc} />
-              <Route path="/Loginn" element={<Loginn />} />
+              <Route path={path} element={element} />
+              <Route path="/Login" element={<Loginn />} />
               <Route exact path="/Home/Walkin" element={<Walkin />} />
               <Route exact path="/Home/Reservation" element={<Reservation />} />
               <Route exact path="/Home/Revenue" element={<Revenue />} />

@@ -4,15 +4,18 @@ import { MdMail } from 'react-icons/md'
 import { BsFileLockFill } from 'react-icons/bs'
 import { MdOutlineClose } from 'react-icons/md'
 import { FaUserCheck } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UidContext } from '../App'
 import { useSelector, useDispatch } from 'react-redux'
 import { PostUsersDispatch } from '../Redux Folder/Dispatch'
+import { GetAdmins } from '../Server/Services'
 
 export default function Loginn() {
+  const Admins = GetAdmins()
   const Users = useSelector((state) => state.UsersReduser)
   const state = useSelector((state) => state.MainReduser)
   const dispatch = useDispatch()
+  const nevigate = useNavigate()
   const { uid, setUid } = useContext(UidContext)
   const [DataRegister, setDataRegister] = useState({})
   const [DataLogin, setDataLogin] = useState({})
@@ -32,27 +35,71 @@ export default function Loginn() {
   }
   const LoginSubmit = (event) => {
     event.preventDefault()
-    let lo = -1
-    for (let j of Users) {
-      if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
-        lo = j;
-        break
-      }
-    }
-    if (lo === -1) {
-      alert("UserName or Password Incorrect.")
-    } else if (LoginChecked === "") {
+    // let lo = -1
+    // for (let j of Users) {
+    //   if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
+    //     lo = j;
+    //     break
+    //   }
+    // }
+    // if (lo === -1) {
+    //   alert("UserName or Password Incorrect.")
+    // } else if (LoginChecked === "") {
+    //   alert("Please, Select Admin or User")
+    // } else if (LoginChecked === "Admin") {
+    //   alert("Login Successfully Admin")
+    //   setUid(1)
+    //   nevigate("/Home")
+    // } else {
+    //   alert("Login Successfully User")
+    //   setUid(0)
+    //   nevigate("/MyAccount")
+    // }
+    if (LoginChecked === "") {
       alert("Please, Select Admin or User")
     } else if (LoginChecked === "Admin") {
-      alert("Login Successfully Admin")
-    } else {
-      alert("Login Successfully User")
+      let lo = -1
+      for (let j of Admins) {
+        if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
+          lo = j;
+          break
+        }
+      }
+      if (lo === -1) {
+        alert("UserName or Password Incorrect.")
+      } else {
+        alert("Login Successfully By Admin")
+        setUid(1)
+        nevigate("/Home")
+      }
+    } else if (LoginChecked === "User") {
+      let bo = -1
+      for (let j of Users) {
+        if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
+          bo = j;
+          break
+        }
+      }
+      if (bo === -1) {
+        alert("UserName or Password Incorrect.")
+      } else {
+        alert("Login Successfully By User")
+        setUid(0)
+        nevigate("/MyAccount")
+      }
     }
   }
   const RegisterSubmit = (event) => {
     event.preventDefault()
     let lo = -1
     for (let i of Users) {
+      if (DataRegister.username === i.username || DataRegister.useremail === i.useremail) {
+        lo = i
+        alert("UserName or Email Exists. Please Use new one.")
+        break
+      }
+    }
+    for (let i of Admins) {
       if (DataRegister.username === i.username || DataRegister.useremail === i.useremail) {
         lo = i
         alert("UserName or Email Exists. Please Use new one.")
