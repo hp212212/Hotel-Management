@@ -14,12 +14,13 @@ export default function Header() {
     Titlee = "My Account"
     // alert(uid)
   } else if (uid === 0) {
-    linkk = "/MyAccount"
-    Titlee = "My Account"
-    // alert(uid)
-  }else if (uid === 1) {
     linkk = "/Home"
     Titlee = "Home"
+
+    // alert(uid)
+  } else {
+    linkk = `/MyAccount/${uid}`
+    Titlee = "My Account"
     // alert(uid)
   }
   return (

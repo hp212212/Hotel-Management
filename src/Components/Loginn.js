@@ -4,6 +4,7 @@ import { MdMail } from 'react-icons/md'
 import { BsFileLockFill } from 'react-icons/bs'
 import { MdOutlineClose } from 'react-icons/md'
 import { FaUserCheck } from 'react-icons/fa'
+import { BiRename } from 'react-icons/bi'
 import { Link, useNavigate } from 'react-router-dom'
 import { UidContext } from '../App'
 import { useSelector, useDispatch } from 'react-redux'
@@ -13,10 +14,9 @@ import { GetAdmins } from '../Server/Services'
 export default function Loginn() {
   const Admins = GetAdmins()
   const Users = useSelector((state) => state.UsersReduser)
-  const state = useSelector((state) => state.MainReduser)
   const dispatch = useDispatch()
   const nevigate = useNavigate()
-  const { uid, setUid } = useContext(UidContext)
+  const { setUid } = useContext(UidContext)
   const [DataRegister, setDataRegister] = useState({})
   const [DataLogin, setDataLogin] = useState({})
   const [LoginChecked, setLoginChecked] = useState("")
@@ -35,26 +35,6 @@ export default function Loginn() {
   }
   const LoginSubmit = (event) => {
     event.preventDefault()
-    // let lo = -1
-    // for (let j of Users) {
-    //   if (DataLogin.fname === j.username && DataLogin.pass === j.userpass) {
-    //     lo = j;
-    //     break
-    //   }
-    // }
-    // if (lo === -1) {
-    //   alert("UserName or Password Incorrect.")
-    // } else if (LoginChecked === "") {
-    //   alert("Please, Select Admin or User")
-    // } else if (LoginChecked === "Admin") {
-    //   alert("Login Successfully Admin")
-    //   setUid(1)
-    //   nevigate("/Home")
-    // } else {
-    //   alert("Login Successfully User")
-    //   setUid(0)
-    //   nevigate("/MyAccount")
-    // }
     if (LoginChecked === "") {
       alert("Please, Select Admin or User")
     } else if (LoginChecked === "Admin") {
@@ -68,8 +48,8 @@ export default function Loginn() {
       if (lo === -1) {
         alert("UserName or Password Incorrect.")
       } else {
-        alert("Login Successfully By Admin")
-        setUid(1)
+        alert("Admin Login Successfully")
+        setUid(0)
         nevigate("/Home")
       }
     } else if (LoginChecked === "User") {
@@ -83,9 +63,9 @@ export default function Loginn() {
       if (bo === -1) {
         alert("UserName or Password Incorrect.")
       } else {
-        alert("Login Successfully By User")
-        setUid(0)
-        nevigate("/MyAccount")
+        alert("User Login Successfully")
+        setUid(bo.id)
+        nevigate(`/MyAccount/${bo.id}`)
       }
     }
   }
@@ -113,6 +93,7 @@ export default function Loginn() {
       }
       dispatch(PostUsersDispatch(DataRegister, AddId, "Users"));
       setDataRegister({})
+      setWrapper("wrapper active-popup")
     }
   }
   return (
@@ -120,6 +101,9 @@ export default function Loginn() {
       <div className="Main">
         <div className={wrapper}>
           <Link className='icon-close' ><MdOutlineClose value="MainClose" onClick={MainClose} /></Link>
+
+
+          {/* ----------------Login Section -------------------- */}
           <div className='form-box login'>
             <h2>login</h2>
             <form onSubmit={LoginSubmit} id="LoginForm">
@@ -144,9 +128,17 @@ export default function Loginn() {
               </div>
             </form>
           </div>
+
+
+          {/* ----------------Registration Section -------------------- */}
           <div className='form-box register' id="RegisterForm">
             <h2>Registration</h2>
             <form onSubmit={RegisterSubmit}>
+              <div className='input-box'>
+                <span className='icon'><BiRename /></span>
+                <input type="text" required onChange={(event) => { setDataRegister({ ...DataRegister, "fname": event.target.value }) }} value={DataRegister.fname || ""} />
+                <label>Full Name</label>
+              </div>
               <div className='input-box'>
                 <span className='icon'><FaUserCheck /></span>
                 <input type="text" required onChange={(event) => { setDataRegister({ ...DataRegister, "username": event.target.value }) }} value={DataRegister.username || ""} />

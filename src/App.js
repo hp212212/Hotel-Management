@@ -1,6 +1,6 @@
 import React, { createContext, Suspense, useState } from 'react';
 import Header from './Components/Header';
-import Header1 from './Components/Header1';
+// import Header1 from './Components/Header1';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Footer from './Components/Footer';
 import { Routes, Route } from 'react-router-dom'
@@ -24,11 +24,11 @@ function App() {
   let element = <Loginn />
   let path = "/Login"
   if (uid === 0) {
-    element = <Userss />
-    path="/MyAccount"
-  } else if (uid === 1) {
     element = <Home />
-    path="/Home"
+    path = "/Home"
+  } else {
+    element = <Userss />
+    path = "/MyAccount/:id"
   }
 
   return (
@@ -42,11 +42,11 @@ function App() {
               <Route path="/" element={<Image />} />
               <Route path={path} element={element} />
               <Route path="/Login" element={<Loginn />} />
-              <Route exact path="/Home/Walkin" element={<Walkin />} />
-              <Route exact path="/Home/Reservation" element={<Reservation />} />
-              <Route exact path="/Home/Revenue" element={<Revenue />} />
-              <Route exact path="/Home/Inhouse/:id" element={<Inhouse />} />
-              <Route exact path="/Home/ReservationInhouse/:id" element={<ReservationInhouse />} />
+              <Route exact path={`${path}/Walkin`} element={<Walkin />} />
+              <Route exact path={`${path}/Reservation`} element={<Reservation />} />
+              <Route exact path={`${path}/Revenue`} element={<Revenue />} />
+              <Route exact path={`${path}/Inhouse/:id`} element={<Inhouse />} />
+              <Route exact path={`${path}/ReservationInhouse/:id`} element={<ReservationInhouse />} />
             </Routes>
           </Suspense>
         </Provider>

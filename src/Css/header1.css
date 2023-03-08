@@ -112,7 +112,7 @@ header {
 }
 
 .wrapper.active {
-    height: 460px;
+    height: 520px;
     transform: scale(1);
 }
 

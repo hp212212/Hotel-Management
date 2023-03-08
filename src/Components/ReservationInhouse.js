@@ -6,7 +6,7 @@ import '../Css/Style.css'
 import '../Css/Inhouse.css'
 import { DatePicker } from 'antd';
 import dayjs from 'dayjs';
-import { GetRoomList } from '../Server/Services';
+// import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PutDispatch } from '../Redux Folder/Dispatch';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -35,18 +35,19 @@ export default function ReservationInhouse() {
     const AvailableRooms = useSelector((state) => state.FindRooms)
     const [CheckIn, setCheckIn] = useState(Reservation.checkin)
     const [CheckOut, setCheckOut] = useState(Reservation.checkout)
-    const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
+    // const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
+    const ReservedRoom = Reservation.roomno
     // alert(ReservedRoom)
     // const RoomList = []
-    const RoomList = GetRoomList()
+    // const RoomList = GetRoomList()
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
     const [PaymentData, setPaymentData] = useState({})
-    let ggg = ''
-    for (let i = 0; i < RoomList.length; i++) {
-        if (Reservation.roomtype === RoomList[i].type) {
-            ggg = i
-        }
-    }
+    // let ggg = ''
+    // for (let i = 0; i < RoomList.length; i++) {
+    //     if (Reservation.roomtype === RoomList[i].type) {
+    //         ggg = i
+    //     }
+    // }
     const [RoomNoFlex1, setRoomNoFlex1] = useState("")
     const [RoomNoFlex2, setRoomNoFlex2] = useState("d-none")
     const [RateEditBtn, setRateEditBtn] = useState("")
@@ -64,7 +65,7 @@ export default function ReservationInhouse() {
         setRateEditBtn("d-none")
         document.getElementById("RoomRateChangeEnable").disabled = false;
     }
-    const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[Number(ggg)])
+    // const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[Number(ggg)])
     const [HandleStayDays, setHandleStayDays] = useState(Reservation.staydays);
     const [Rate, setRate] = useState(Number(Reservation.rate))
     const disabledDate2 = (current) => {
