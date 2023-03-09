@@ -57,11 +57,7 @@ export default function Loginn() {
           theme: "dark",
         });
       } else {
-        toast.success("Admin Login Successfully.", {
-          position: "top-center",
-          autoClose: 1500,
-          theme: "dark",
-        });
+        alert("Admin Login Successfully.")
         setUid(0)
         nevigate("/Home")
       }
@@ -80,11 +76,7 @@ export default function Loginn() {
           theme: "dark",
         });
       } else {
-        toast.success("User Login Successfully", {
-          position: "top-center",
-          autoClose: 1500,
-          theme: "dark",
-        });
+        alert("User Login Successfully")
         setUid(bo.id)
         nevigate(`/MyAccount/${bo.id}`)
       }

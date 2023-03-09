@@ -36,7 +36,7 @@ export default function Home() {
                                             if (now === res.checkin && "Reservation" === res.status) {
                                                 return (
                                                     <div className="MiddleItemsdesign">
-                                                        <Nav.Link as={NavLink} to={`${location.pathname}/ReservationInhouse/${res.id}`} className="my-1 ps-1 reservationsitems" href='#'>{res.fname}</Nav.Link>
+                                                        <Nav.Link as={NavLink} to={`${location.pathname}/ReservationInhouse/${res.id}`} className="my-1 ps-1 reservationsitems" href='#'>{fname}</Nav.Link>
                                                     </div>
                                                 )
 

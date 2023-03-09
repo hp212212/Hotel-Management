@@ -11,6 +11,7 @@ import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
+import { ToastContainer, toast } from 'react-toastify';
 // import moment from 'moment';
 
 export default function Walkin() {
@@ -58,9 +59,6 @@ export default function Walkin() {
     }
     const SelectRoomType = (event) => {
         RoomType = event.target.value
-        // console.log(CheckIn)
-        // console.log(CheckOut)
-        // console.log(event.target.value)
         document.getElementById("RoomNoInput").selectedIndex = 0
         if (RoomType !== "Select Room Type") {
             for (let i = 0; i < RoomList.length; i++) {
@@ -74,7 +72,6 @@ export default function Walkin() {
                     break
                 }
             }
-            // console.log(AvailableRooms)
         } else {
             dispatch(FindRoomsDispatch(CheckIn, CheckOut, event.target.value))
             setSeltdRomTy("")
@@ -91,7 +88,11 @@ export default function Walkin() {
     }, [Adults, Child])
     const AddPayment = () => {
         if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
-            alert("please Add valid Paymint.")
+            toast.info("please Add valid Paymint.", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("SelectPaymentMethod").selectedIndex = 0
             document.getElementById("PaymentAmount").value = ''
         } else {
@@ -107,14 +108,30 @@ export default function Walkin() {
     const FinalSubmit = (event) => {
         event.preventDefault()
         if (TotalPerson === 0) {
-            alert("Please, Enter atlease one Adult")
+            toast.info("Please, Enter atlease one Adult", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("TotalAdults").focus()
         } else if (HandleStayDays === 0) {
-            alert("Please Some Days")
+            toast.info("Please Add Some Days", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else if (SeltdRomTy === "") {
-            alert("Please Select Room Type")
+            toast.info("Please Select Room Type", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else if (document.getElementById("RoomNoInput").value === "Select Room") {
-            alert("Please Select Room")
+            toast.info("Please Select Room", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else {
             let AddId = 1;
             if (state.length > 0) {
@@ -361,7 +378,7 @@ export default function Walkin() {
                     </div>
                 </Form>
             </Container>
-
+            <ToastContainer />
             {/* <Container >
                 <Row>
                     <Col xs>

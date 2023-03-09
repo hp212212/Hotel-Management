@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -11,7 +11,6 @@ export default function Userss() {
   const { uid, setUid } = useContext(UidContext)
   const navigate = useNavigate()
   const { id } = useParams()
-  console.log(id)
   const Users = useSelector((state) => state.UsersReduser)
   let OneUser = {}
   for (let i of Users) {
@@ -67,7 +66,6 @@ export default function Userss() {
   const data1 = [];
   const data2 = [];
   for (let i of Reservation) {
-    let ka = 0
     if (i.UserName === OneUser.username) {
       if (i.checkin < now) {
         data2.push({

@@ -38,7 +38,6 @@ export default function ReservationInhouse() {
     const [CheckOut, setCheckOut] = useState(Reservation.checkout)
     // const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
     const ReservedRoom = Reservation.roomno
-    // alert(ReservedRoom)
     // const RoomList = []
     // const RoomList = GetRoomList()
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
@@ -94,7 +93,11 @@ export default function ReservationInhouse() {
     // (event) => { setReservation({ ...Reservation, "status": event.target.value }) }
     const AddPayment = () => {
         if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
-            alert("please Add valid Paymint.")
+            toast.info("please Add valid Paymint.", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("SelectPaymentMethod").selectedIndex = 0
             document.getElementById("PaymentAmount").value = ''
         } else {
@@ -110,7 +113,11 @@ export default function ReservationInhouse() {
     const FinalSubmit = (event) => {
         event.preventDefault()
         if (HandleStayDays === 0) {
-            alert("Please Some Days")
+            toast.info("Please Add Some Days", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else {
             let EditId = Reservation.id;
             dispatch(PutDispatch(Reservation, EditId, "MainDataApi"))

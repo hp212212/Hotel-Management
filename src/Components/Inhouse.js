@@ -64,7 +64,7 @@ export default function Inhouse() {
         setRateEditBtn("d-none")
         document.getElementById("RoomRateChangeEnable").disabled = false;
     }
-    const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[Number(ggg)])
+    // const [SeltdRomTy, setSeltdRomTy] = useState(RoomList[Number(ggg)])
     const [HandleStayDays, setHandleStayDays] = useState(Reservation.staydays);
     const [Rate, setRate] = useState(Number(Reservation.rate))
     const disabledDate2 = (current) => {

@@ -19,7 +19,6 @@ export function MainReduser(state = defultMainDataApiData, action) {
                     state.splice(i, 1, action.Load)
                 }
             }
-            console.log(state)
             return state
         default:
             return state;

@@ -25,10 +25,10 @@ export default function Header1() {
       <header>
         <h2 className="logo">Logo</h2>
         <nav className='navigation'>
-          <a href="#">Home</a>
-          <a href="#">About</a>
-          <a href="#">Contact</a>
-          <a href="#">Service</a>
+          <Link href="#">Home</Link>
+          <Link href="#">About</Link>
+          <Link href="#">Contact</Link>
+          <Link href="#">Service</Link>
           <button className='btnLogin-popup' name="MainLogin" onClick={ChangeChange}>Login</button>
         </nav>
       </header>

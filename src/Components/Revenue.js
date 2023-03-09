@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Container, Row, Col, InputGroup, Button, Form, Modal, Stack } from 'react-bootstrap'
+import { Container, Row, Col, InputGroup, Button, Form, Modal } from 'react-bootstrap'
 import { DatePicker, Table } from 'antd';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Revenue() {
     const [show, setShow] = useState(false);
@@ -57,7 +58,11 @@ export default function Revenue() {
         RevenueList = []
         if (StartDate >= EndDate) {
             setRevenueList([])
-            alert("Start Date must be LESS THEN End Date")
+            toast.info("Start Date must be LESS THEN End Date", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             setTotal(0)
         } else {
             let Update = {}
@@ -87,39 +92,31 @@ export default function Revenue() {
         setShow(false)
         RevenueList
             .sort((a, b) => a.Date > b.Date ? 1 : -1)
-        console.log(RevenueList)
         setRevenueList(RevenueList)
     }
     const handleRoomType = () => {
         setShow(false)
         RevenueList
             .sort((a, b) => a.RoomType > b.RoomType ? 1 : -1)
-        console.log(RevenueList)
         setRevenueList(RevenueList)
     }
     const handlePaymentMethod = () => {
         setShow(false)
         RevenueList
             .sort((a, b) => a.PaymentMethod > b.PaymentMethod ? 1 : -1)
-        console.log(RevenueList)
         setRevenueList(RevenueList)
     }
     const handleRoomNo = () => {
         setShow(false)
         RevenueList
             .sort((a, b) => a.RoomNo > b.RoomNo ? 1 : -1)
-        console.log(RevenueList)
         setRevenueList(RevenueList)
-    }
-    const FindByRoom = () => {
-
     }
     // RevenueList.sort(function (a, b) {
     //     if (a.Payment > b.Payment) return 1;
     //     if (a.Payment < b.Payment) return 1;
     //     return 0;
     // })
-    // console.log(RevenueList)
     // for (let i = 0; i < RevenueList.length; i++) {
     //     data.push({
     //         key: i,
@@ -210,14 +207,14 @@ export default function Revenue() {
                 </Row>
                 <Row>
                     <Col xs={12} className='bg-success pt-3' >
-                        <Table columns={columns} dataSource={data} size="small" style={{ minHeight: "70vh" }}/>
+                        <Table columns={columns} dataSource={data} size="small" style={{ minHeight: "70vh" }} />
                     </Col>
                 </Row>
             </Container>
 
             <Modal
                 show={show}
-                onHide={handleDate} 
+                onHide={handleDate}
                 backdrop="static"
                 keyboard={false}
             >
@@ -239,6 +236,7 @@ export default function Revenue() {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            <ToastContainer />
         </>
     )
 }
