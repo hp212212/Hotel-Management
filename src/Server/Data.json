@@ -274,6 +274,31 @@
       "roomno": 121,
       "rate": 130,
       "id": 9
+    },
+    {
+      "UserName": "Hitesh",
+      "checkin": "2023-03-10",
+      "checkout": "2023-03-17",
+      "account": [
+        {
+          "paymentmethod": "Master Card",
+          "amount": 100,
+          "date": "2023-03-09"
+        }
+      ],
+      "status": "Reservation",
+      "fname": "Hitesh",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "hp212212@gmail.com",
+      "staydays": 7,
+      "adults": 2,
+      "childs": 1,
+      "roomtype": "NK1",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 117,
+      "rate": 120,
+      "id": 10
     }
   ],
   "RoomList": [
@@ -461,6 +486,13 @@
       "useremail": "jpjp212212@gmail.com",
       "userpass": "123",
       "id": 3
+    },
+    {
+      "fname": "Hitesh From Site",
+      "username": "Hitesh",
+      "useremail": "hpph212212@gmail.com",
+      "userpass": "123",
+      "id": 4
     }
   ]
 }
