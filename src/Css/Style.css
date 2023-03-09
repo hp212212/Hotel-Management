@@ -5,7 +5,7 @@ body {
 
 .side {
     height: 90vh;
-    background-color: rgb(222, 230, 187);
+    /* background-color: rgb(222, 230, 187); */
     border: solid 3px #89a850;
     /* min-width: 100px; */
 }
@@ -13,6 +13,16 @@ body {
 .navlink:hover {
     background-color: rgb(167, 141, 190);
     border-radius: 3px;
+}
+.abcdefgh{
+    background: url('../Images/background.jpg');
+    background-size: cover;
+    padding-top: 5px;
+}
+#MainForm{
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 0 12px;
 }
 
 .MainHome {
@@ -23,7 +33,7 @@ body {
 }
 
 .reservations {
-    background-color: #89a850;
+    /* background-color: #89a850; */
 }
 
 .reservationsitems {
@@ -169,7 +179,7 @@ overflow-y: scroll;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgb(224, 224, 119);
+    /* background-color: rgb(224, 224, 119); */
     padding-left: 10px;
     position: absolute;
     top: 0;
@@ -316,6 +326,7 @@ overflow-y: scroll;
     margin: 5px 15px;
     font-size: 25px;
     transition: all 0.2s linear;
+    color: #f3eebd;
 }
 
 .underNabBariconsItems:hover {

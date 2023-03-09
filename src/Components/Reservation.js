@@ -169,7 +169,8 @@ export default function Reservation() {
     }
     return (
         <>
-            <Container className="my-2">
+        <div className="abcdefgh">
+            <Container >
                 <Form onSubmit={FinalSubmit} id="MainForm">
 
                     {/* ---------------------Personal Detail------------------------------ */}
@@ -396,6 +397,7 @@ export default function Reservation() {
                     </div>
                 </Form>
             </Container>
+        </div>
             <ToastContainer />
             {/* <Container >
                 <Row>

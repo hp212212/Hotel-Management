@@ -4,6 +4,7 @@ import { DatePicker, Table } from 'antd';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import '../Css/Style.css'
 
 export default function Revenue() {
     const [show, setShow] = useState(false);
@@ -145,23 +146,24 @@ export default function Revenue() {
         })
     return (
         <>
-            <Container>
-                <Row>
-                    <Col lg={4}>
-                        <InputGroup className="m-1">
-                            <InputGroup.Text >Start Date</InputGroup.Text>
-                            <InputGroup.Text >
-                                <DatePicker
-                                    format="YYYY-MM-DD"
-                                    // disabledDate={disabledDate}
-                                    defaultValue={dayjs(now).endOf('day')}
-                                    id="d1"
-                                    showToday={false}
-                                    onChange={TotalDays}
-                                />
+            <div className="abcdefgh">
+                <Container>
+                    <Row>
+                        <Col lg={4}>
+                            <InputGroup className="m-1">
+                                <InputGroup.Text >Start Date</InputGroup.Text>
+                                <InputGroup.Text >
+                                    <DatePicker
+                                        format="YYYY-MM-DD"
+                                        // disabledDate={disabledDate}
+                                        defaultValue={dayjs(now).endOf('day')}
+                                        id="d1"
+                                        showToday={false}
+                                        onChange={TotalDays}
+                                    />
 
-                                {/*---------------------------- By React DatePicker----------------------- */}
-                                {/* <DatePicker
+                                    {/*---------------------------- By React DatePicker----------------------- */}
+                                    {/* <DatePicker
                                     closeOnScroll={true}
                                     dateFormat="yyyy-MM-dd"
                                     showIcon
@@ -176,41 +178,42 @@ export default function Revenue() {
                                     peekNextMonth
                                     dropdownMode="select"
                                 /> */}
-                            </InputGroup.Text>
-                        </InputGroup>
-                    </Col>
-                    <Col lg={4}>
-                        <InputGroup className="m-1">
-                            <InputGroup.Text >End Date</InputGroup.Text>
-                            <InputGroup.Text >
-                                <DatePicker
-                                    format="YYYY-MM-DD"
-                                    // disabledDate={disabledDate}
-                                    defaultValue={dayjs(now).endOf('day')}
-                                    id="d2"
-                                    showToday={false}
-                                    onChange={TotalDays}
-                                />
-                            </InputGroup.Text>
-                        </InputGroup>
-                    </Col>
-                    <Col lg={4}>
-                        <Button variant="outline-success" className="w-100 mt-2 mb-1" onClick={FindByDate}>Total Revenue</Button>
-                    </Col>
-                    <Col md={{ span: 6, offset: 6 }}>
-                        <InputGroup className="m-1">
-                            <InputGroup.Text >Total Revenue</InputGroup.Text>
-                            <Form.Control value={Total} disabled className="bg-warning fw-bold text-danger fs-4" />
-                            <InputGroup.Text >CAD $</InputGroup.Text>
-                        </InputGroup>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col xs={12} className='bg-success pt-3' >
-                        <Table columns={columns} dataSource={data} size="small" style={{ minHeight: "70vh" }} />
-                    </Col>
-                </Row>
-            </Container>
+                                </InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="m-1">
+                                <InputGroup.Text >End Date</InputGroup.Text>
+                                <InputGroup.Text >
+                                    <DatePicker
+                                        format="YYYY-MM-DD"
+                                        // disabledDate={disabledDate}
+                                        defaultValue={dayjs(now).endOf('day')}
+                                        id="d2"
+                                        showToday={false}
+                                        onChange={TotalDays}
+                                    />
+                                </InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <Button variant="outline-success" className="w-100 mt-2 mb-1" onClick={FindByDate}>Total Revenue</Button>
+                        </Col>
+                        <Col md={{ span: 6, offset: 6 }}>
+                            <InputGroup className="m-1">
+                                <InputGroup.Text >Total Revenue</InputGroup.Text>
+                                <Form.Control value={Total} disabled className="bg-warning fw-bold text-danger fs-4" />
+                                <InputGroup.Text >CAD $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={12} className=' pt-3' >
+                            <Table columns={columns} dataSource={data} size="small" style={{ minHeight: "70vh" }} />
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
 
             <Modal
                 show={show}

@@ -127,6 +127,7 @@ export default function ReservationInhouse() {
     }
     return (
         <>
+        <div className="abcdefgh">
             <Container className="my-2">
                 <Form onSubmit={FinalSubmit} id="MainForm">
 
@@ -364,6 +365,7 @@ export default function ReservationInhouse() {
                     </div>
                 </Form>
             </Container>
+            </div>
             <ToastContainer />
         </>
     )
