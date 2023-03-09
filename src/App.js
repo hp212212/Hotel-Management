@@ -15,6 +15,7 @@ import ReservationInhouse from './Components/ReservationInhouse';
 import Loginn from './Components/Loginn';
 import Revenue from './Components/Revenue';
 import Userss from './Components/Userss';
+import 'react-toastify/dist/ReactToastify.css';
 const Home = React.lazy(() => import('./Components/Home.js'));
 const Inhouse = React.lazy(() => import('./Components/Inhouse.js'));
 export const UidContext = createContext()

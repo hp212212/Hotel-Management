@@ -12,6 +12,7 @@ import { FindRoomsDispatch, PutDispatch } from '../Redux Folder/Dispatch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
 import TableDisplay from './TableDisplay';
+import { ToastContainer, toast } from 'react-toastify';
 // import moment from 'moment';
 
 export default function ReservationInhouse() {
@@ -356,6 +357,7 @@ export default function ReservationInhouse() {
                     </div>
                 </Form>
             </Container>
+            <ToastContainer />
         </>
     )
 }

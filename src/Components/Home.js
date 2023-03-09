@@ -20,7 +20,7 @@ export default function Home() {
     const location = useLocation()
     return (
         <>
-            <div style={{ height: "90vh", width: "100vw", backgroundColor: "whitesmoke" }}>
+            <div className="MainHome">
                 <Container fluid="xxl" >
                     <Row >
                         <Col sm={2} className="side p-1">
@@ -66,7 +66,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </Col>
-                        <Col md={10} className="underNabBar">
+                        <Col xs={10} className="underNabBar">
                             <div className="underNabBaricons">
                                 <Nav.Link as={NavLink} to={`${location.pathname}/Walkin`}>
                                     <ImEnter className="underNabBariconsItems" title="Walk In" />

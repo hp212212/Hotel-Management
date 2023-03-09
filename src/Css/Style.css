@@ -15,6 +15,13 @@ body {
     border-radius: 3px;
 }
 
+.MainHome {
+    height: 90vh;
+    width: 100hw;
+    background:url('../Images/background.jpg');
+    background-size: cover;
+}
+
 .reservations {
     background-color: #89a850;
 }
@@ -141,8 +148,37 @@ overflow-y: scroll;
     justify-content: start;
     align-items: flex-start;
     margin-top: 6vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    max-height: 83vh;
 }
-.Facility{
+
+.MiddlePart::-webkit-scrollbar {
+    display: none;
+}
+
+.underNabBar {
+    max-height: 90vh;
+    padding: 0px;
+    /* overflow-y: auto;
+    scroll-behavior: smooth; */
+    position: relative;
+}
+
+.underNabBaricons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgb(224, 224, 119);
+    padding-left: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.Facility {
     max-height: 5px;
     /* overflow-x: hidden; */
 }
@@ -223,7 +259,8 @@ overflow-y: scroll;
     padding: 3px;
     justify-content: center;
 }
-.FamilyIcon{
+
+.FamilyIcon {
     /* size: 50px; */
     font-size: 46px;
     padding: 5px;
@@ -275,25 +312,6 @@ overflow-y: scroll;
     margin: 0;
 }
 
-.underNabBar {
-    max-height: 90vh;
-    padding: 0px;
-    overflow-y: auto;
-    scroll-behavior: smooth;
-    position: relative;
-}
-
-.underNabBaricons {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    background-color: rgb(224, 224, 119);
-    padding-left: 10px;
-    position: fixed;
-    width: 100%;
-    z-index: 100;
-}
-
 .underNabBariconsItems {
     margin: 5px 15px;
     font-size: 25px;
@@ -326,3 +344,23 @@ overflow-y: scroll;
 /* transform: rotateZ(6deg); */
 /* transform: rotate3d(1, 1, 1, 45deg); */
 /* } */
+.UserssContainer {
+    background: url('../Images/background.jpg');
+    background-size: cover;
+}
+
+.UserssContainer h1 {
+    color: #fff;
+    font-family: 'Roboto Slab', serif;
+    /* font-family: 'Tilt Prism', cursive; */
+    text-align: center;
+}
+
+.UserssContainer h3 {
+    color: red;
+    /* font-family: 'Roboto Slab', serif; */
+    /* font-family: 'Tilt Prism', cursive; */
+    font-family: 'Sono', sans-serif;
+    text-align: center;
+    justify-content: space-between;
+}

@@ -12,16 +12,12 @@ export default function Header() {
   if (uid === -1) {
     linkk = "/Login"
     Titlee = "My Account"
-    // alert(uid)
   } else if (uid === 0) {
     linkk = "/Home"
     Titlee = "Home"
-
-    // alert(uid)
   } else {
     linkk = `/MyAccount/${uid}`
     Titlee = "My Account"
-    // alert(uid)
   }
   return (
     <>

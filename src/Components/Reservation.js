@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, InputGroup } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../Css/Style.css'
@@ -11,9 +11,21 @@ import { GetRoomList } from '../Server/Services';
 import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
+import { ToastContainer, toast } from 'react-toastify';
 // import moment from 'moment';
 
 export default function Reservation() {
+    const { id } = useParams()
+    let UserName = ""
+    const Users = useSelector((state) => state.UsersReduser)
+    if (id) {
+        for (let g of Users) {
+            if (g.id === Number(id)) {
+                UserName = g.username
+                break
+            }
+        }
+    }
     let now = dayjs().format('YYYY-MM-DD')
     const state = useSelector((state) => state.MainReduser)
     const AvailableRooms = useSelector((state) => state.FindRooms)
@@ -24,7 +36,9 @@ export default function Reservation() {
     const RoomList = GetRoomList()
     // const RoomList = []
     const dispatch = useDispatch()
-    const [Data, setData] = useState({ "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "Reservation" })
+    const [Data, setData] = useState({
+        "UserName": UserName, "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "Reservation"
+    })
     const [SeltdRomTy, setSeltdRomTy] = useState("")
     const [Rate, setRate] = useState(0)
     const [HandleStayDays, setHandleStayDays] = useState(0);
@@ -94,7 +108,11 @@ export default function Reservation() {
     }, [Adults, Child])
     const AddPayment = () => {
         if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
-            alert("please Add valid Paymint.")
+            toast.info("please Add valid Paymint.", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("SelectPaymentMethod").selectedIndex = 0
             document.getElementById("PaymentAmount").value = ''
         } else {
@@ -110,14 +128,30 @@ export default function Reservation() {
     const FinalSubmit = (event) => {
         event.preventDefault()
         if (TotalPerson === 0) {
-            alert("Please, Enter atlease one Adult")
+            toast.info("Please, Enter atlease one Adult", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("TotalAdults").focus()
         } else if (HandleStayDays === 0) {
-            alert("Please Add Some Days")
+            toast.info("Please Add Some Days", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else if (SeltdRomTy === "") {
-            alert("Please Select Room Type")
+            toast.info("Please Select Room Type", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else if (document.getElementById("RoomNoInput").value === "Select Room") {
-            alert("Please Select Room")
+            toast.info("Please Select Room", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else {
             let AddId = 1;
             if (state.length > 0) {
@@ -126,7 +160,11 @@ export default function Reservation() {
             dispatch(PostDispatch(Data, AddId, "MainDataApi"))
             setData({ "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "Reservation" })
             document.getElementById("MainForm").reset()
-            navigate("/Home")
+            if (id) {
+                navigate(`/MyAccount/${id}`)
+            } else {
+                navigate("/Home")
+            }
         }
     }
     return (
@@ -358,7 +396,7 @@ export default function Reservation() {
                     </div>
                 </Form>
             </Container>
-
+            <ToastContainer />
             {/* <Container >
                 <Row>
                     <Col xs>

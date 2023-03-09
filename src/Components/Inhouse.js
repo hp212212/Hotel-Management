@@ -12,6 +12,7 @@ import { PutDispatch, FindRoomsDispatch } from '../Redux Folder/Dispatch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
 import TableDisplay from './TableDisplay';
+import { ToastContainer, toast } from 'react-toastify';
 // import moment from 'moment';
 
 export default function Inhouse() {
@@ -91,7 +92,11 @@ export default function Inhouse() {
     }
     const StatusChange = (event) => {
         if (event.target.value === "Check Out" && now < Reservation.checkout) {
-            alert("Today is NOT the Check Out Day.")
+            toast.info("Today is NOT the Check Out Day.", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("SelectStatus").selectedIndex = 0
         } else {
             setReservation({ ...Reservation, "status": event.target.value })
@@ -100,7 +105,11 @@ export default function Inhouse() {
     // (event) => { setReservation({ ...Reservation, "status": event.target.value }) }
     const AddPayment = () => {
         if (PaymentData.paymentmethod === "none" || PaymentData.amount === 0 || Object.keys(PaymentData).length === 0) {
-            alert("please Add valid Paymint.")
+            toast.info("please Add valid Paymint.", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
             document.getElementById("SelectPaymentMethod").selectedIndex = 0
             document.getElementById("PaymentAmount").value = ''
         } else {
@@ -116,7 +125,11 @@ export default function Inhouse() {
     const FinalSubmit = (event) => {
         event.preventDefault()
         if (HandleStayDays === 0) {
-            alert("Please Some Days")
+            toast.info("Please Add Some Days", {
+                position: "top-center",
+                autoClose: 1500,
+                theme: "dark",
+            });
         } else {
             let EditId = Reservation.id;
             dispatch(PutDispatch(Reservation, EditId, "MainDataApi"))
@@ -360,6 +373,7 @@ export default function Inhouse() {
                     </div>
                 </Form>
             </Container>
+            <ToastContainer />
         </>
     )
 }

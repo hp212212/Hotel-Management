@@ -10,6 +10,7 @@ import { UidContext } from '../App'
 import { useSelector, useDispatch } from 'react-redux'
 import { PostUsersDispatch } from '../Redux Folder/Dispatch'
 import { GetAdmins } from '../Server/Services'
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function Loginn() {
   const Admins = GetAdmins()
@@ -36,7 +37,11 @@ export default function Loginn() {
   const LoginSubmit = (event) => {
     event.preventDefault()
     if (LoginChecked === "") {
-      alert("Please, Select Admin or User")
+      toast.info("Please, Select Admin or User", {
+        position: "top-center",
+        autoClose: 1500,
+        theme: "dark",
+      });
     } else if (LoginChecked === "Admin") {
       let lo = -1
       for (let j of Admins) {
@@ -46,9 +51,17 @@ export default function Loginn() {
         }
       }
       if (lo === -1) {
-        alert("UserName or Password Incorrect.")
+        toast.info("UserName or Password Incorrect.", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
       } else {
-        alert("Admin Login Successfully")
+        toast.success("Admin Login Successfully.", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
         setUid(0)
         nevigate("/Home")
       }
@@ -61,9 +74,17 @@ export default function Loginn() {
         }
       }
       if (bo === -1) {
-        alert("UserName or Password Incorrect.")
+        toast.info("UserName or Password Incorrect.", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
       } else {
-        alert("User Login Successfully")
+        toast.success("User Login Successfully", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
         setUid(bo.id)
         nevigate(`/MyAccount/${bo.id}`)
       }
@@ -75,14 +96,22 @@ export default function Loginn() {
     for (let i of Users) {
       if (DataRegister.username === i.username || DataRegister.useremail === i.useremail) {
         lo = i
-        alert("UserName or Email Exists. Please Use new one.")
+        toast.info("UserName or Email Exists. Please Use new one.", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
         break
       }
     }
     for (let i of Admins) {
       if (DataRegister.username === i.username || DataRegister.useremail === i.useremail) {
         lo = i
-        alert("UserName or Email Exists. Please Use new one.")
+        toast.info("UserName or Email Exists. Please Use new one.", {
+          position: "top-center",
+          autoClose: 1500,
+          theme: "dark",
+        });
         break
       }
     }
@@ -162,6 +191,7 @@ export default function Loginn() {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }
