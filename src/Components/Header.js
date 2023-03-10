@@ -28,6 +28,7 @@ export default function Header() {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav ><Nav.Link as={NavLink} to={linkk} className="ms-5 navlink" style={{ fontWeight: "bold" }} >{Titlee}</Nav.Link></Nav>
             <Nav><Nav.Link as={NavLink} to={"/Login"} className=" navlink" style={{ fontWeight: "bold" }}>Login</Nav.Link></Nav>
+            {/* <Nav><Nav.Link as={NavLink} to={"/Email"} className=" navlink" style={{ fontWeight: "bold" }}>Email</Nav.Link></Nav> */}
             {/* <Nav><Nav.Link as={NavLink} to={"/Home"} className=" navlink" style={{ fontWeight: "bold" }}>Transections</Nav.Link></Nav> */}
           </Navbar.Collapse>
         </Container>

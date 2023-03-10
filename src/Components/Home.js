@@ -77,12 +77,6 @@ export default function Home() {
                                 <Nav.Link as={NavLink} to={`${location.pathname}/Revenue`}>
                                     <GiTakeMyMoney className="underNabBariconsItems" title="Revenue" />
                                 </Nav.Link>
-                                <Nav.Link as={NavLink} to={"/Inhouse"}>
-                                    <FaChrome className="underNabBariconsItems" />
-                                </Nav.Link>
-                                <Nav.Link as={NavLink} to={"/Inhouse"}>
-                                    <FaChrome className="underNabBariconsItems" />
-                                </Nav.Link>
                             </div>
                             <div className="MiddlePart">
                                 {

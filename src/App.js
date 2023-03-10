@@ -16,6 +16,7 @@ import Loginn from './Components/Loginn';
 import Revenue from './Components/Revenue';
 import Userss from './Components/Userss';
 import 'react-toastify/dist/ReactToastify.css';
+// import Email from './Components/Email';
 const Home = React.lazy(() => import('./Components/Home.js'));
 const Inhouse = React.lazy(() => import('./Components/Inhouse.js'));
 export const UidContext = createContext()
@@ -48,6 +49,7 @@ function App() {
               <Route exact path={`${path}/Revenue`} element={<Revenue />} />
               <Route exact path={`${path}/Inhouse/:id`} element={<Inhouse />} />
               <Route exact path={`${path}/ReservationInhouse/:id`} element={<ReservationInhouse />} />
+              {/* <Route exact path="/Email" element={<Email />} /> */}
             </Routes>
           </Suspense>
         </Provider>

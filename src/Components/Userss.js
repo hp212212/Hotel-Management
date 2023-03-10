@@ -67,7 +67,7 @@ export default function Userss() {
   const data2 = [];
   for (let i of Reservation) {
     if (i.UserName === OneUser.username) {
-      if (i.checkin < now) {
+      if (i.checkin <= now) {
         data2.push({
           key: i.id,
           Checkin: i.checkin,

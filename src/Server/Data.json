@@ -196,7 +196,7 @@
           "date": "2023-03-09"
         }
       ],
-      "status": "Reservation",
+      "status": "In House",
       "fname": "Sweta 2023-03-10",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
@@ -226,7 +226,7 @@
           "date": "2023-03-09"
         }
       ],
-      "status": "Reservation",
+      "status": "In House",
       "fname": "Sweta",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
@@ -261,7 +261,7 @@
           "date": "2023-03-09"
         }
       ],
-      "status": "Reservation",
+      "status": "In House",
       "fname": "Sweta 3",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
@@ -286,7 +286,7 @@
           "date": "2023-03-09"
         }
       ],
-      "status": "Reservation",
+      "status": "In House",
       "fname": "Hitesh",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
