@@ -216,33 +216,22 @@
       "id": 7
     },
     {
-      "UserName": "sp",
-      "checkin": "2023-03-10",
-      "checkout": "2023-03-20",
-      "account": [
-        {
-          "paymentmethod": "Master Card",
-          "amount": 520,
-          "date": "2023-03-09"
-        },
-        {
-          "paymentmethod": "Cash",
-          "amount": 253.35,
-          "date": "2023-03-09"
-        }
-      ],
+      "UserName": "",
+      "checkin": "2023-03-12",
+      "checkout": "2023-03-22",
+      "account": [],
       "status": "In House",
-      "fname": "Sweta",
+      "fname": "Rajesh",
       "address": "5018 1 Avenue",
       "telephone": "5879260819",
-      "email": "hp212212@gmail.com",
+      "email": "sdfsiodfk@gmail.com",
       "staydays": 10,
-      "adults": 3,
-      "childs": 2,
-      "roomtype": "NQQ2",
-      "roomfacility": "2 Queen Beds With Kitchen, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
-      "roomno": 122,
-      "rate": 135,
+      "adults": 2,
+      "childs": 1,
+      "roomtype": "NK1",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 120,
+      "rate": 90,
       "id": 8
     },
     {
@@ -348,6 +337,25 @@
       "roomno": 127,
       "rate": 100,
       "id": 12
+    },
+    {
+      "UserName": "",
+      "checkin": "2023-03-12",
+      "checkout": "2023-03-22",
+      "account": [],
+      "status": "Reservation",
+      "fname": "Rajesh",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "sdfsiodfk@gmail.com",
+      "staydays": 10,
+      "adults": 2,
+      "childs": 1,
+      "roomtype": "NK1",
+      "roomfacility": "1 King Bed, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 111,
+      "rate": 90,
+      "id": 13
     }
   ],
   "Users": [

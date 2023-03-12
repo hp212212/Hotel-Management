@@ -30,8 +30,8 @@ export default function Reservation() {
     let now = dayjs().format('YYYY-MM-DD')
     const state = useSelector((state) => state.MainReduser)
     const AvailableRooms = useSelector((state) => state.FindRooms)
-    const [CheckIn, setCheckIn] = useState(dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'))
-    const [CheckOut, setCheckOut] = useState(dayjs().add(1, 'day').startOf('day').format('YYYY-MM-DD'))
+    const [CheckIn, setCheckIn] = useState(dayjs().startOf('day').format('YYYY-MM-DD'))
+    const [CheckOut, setCheckOut] = useState(dayjs().startOf('day').format('YYYY-MM-DD'))
     const navigate = useNavigate()
     let RoomType = ""
     // const RoomList = GetRoomList()
@@ -236,7 +236,7 @@ export default function Reservation() {
                                     <DatePicker
                                         format="YYYY-MM-DD"
                                         disabledDate={disabledDate1}
-                                        defaultValue={dayjs().add(1, 'day').endOf('day')}
+                                        defaultValue={dayjs().startOf('day')}
                                         // disabled
                                         id="d1"
                                         onChange={TotapDays}
@@ -249,7 +249,7 @@ export default function Reservation() {
                                     <DatePicker
                                         format="YYYY-MM-DD"
                                         disabledDate={disabledDate2}
-                                        defaultValue={dayjs().add(1, 'day').endOf('day')}
+                                        defaultValue={dayjs().startOf('day')}
                                         id="d2"
                                         onChange={TotapDays}
                                     />
