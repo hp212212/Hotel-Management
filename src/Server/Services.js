@@ -15,7 +15,7 @@ export const GetMainDataApi = () => {
 export const GetRoomList = () => {
     let xxx = []
     $.ajax({
-        url: 'http://localhost:5000/RoomList',
+        url: 'https://hp212212.github.io/Horel-Management-RoomList-Api/RoomList.json',
         type: "GET",
         async: false,
         success: function (abc) { xxx = abc },
@@ -59,7 +59,7 @@ export const GetUsers = () => {
 export const GetAdmins = () => {
     let xxx = []
     $.ajax({
-        url: 'http://localhost:5000/Admins',
+        url: 'https://hp212212.github.io/Horel-Management-RoomList-Api/AdminName.json',
         type: "GET",
         async: false,
         success: function (abc) { xxx = abc },
