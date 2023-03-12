@@ -13,7 +13,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
 import TableDisplay from './TableDisplay';
 import { ToastContainer, toast } from 'react-toastify';
-import { RoomListApi } from '../Server/DataApi';
 // import moment from 'moment';
 
 export default function Inhouse() {
@@ -38,8 +37,7 @@ export default function Inhouse() {
     const [CheckIn, setCheckIn] = useState(Reservation.checkin)
     const [CheckOut, setCheckOut] = useState(Reservation.checkout)
     const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
-    // const RoomList = GetRoomList()
-    const RoomList=RoomListApi()
+    const RoomList = GetRoomList()
     // const RoomList = []
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
     const [PaymentData, setPaymentData] = useState({})
@@ -86,7 +84,7 @@ export default function Inhouse() {
         setReservation({ ...Reservation, "checkin": d1, "checkout": d2, "staydays": days })
         dispatch(FindRoomsDispatch(d1, d2, Reservation.roomtype, ReservedRoom))
     }
-    const SelectRoomRate = (event) => {
+    const SelectRoom = (event) => {
         if (event.target.value !== "Select Room") {
             setReservation({ ...Reservation, "roomno": Number(event.target.value) })
             // setReservedRoom(Number(event.target.value))
@@ -268,7 +266,7 @@ export default function Inhouse() {
                                 </InputGroup>
                                 <InputGroup className={`mb-1 ${RoomNoFlex2}`} >
                                     <InputGroup.Text>Room</InputGroup.Text>
-                                    <Form.Select id="RoomNoInput" onChange={(event) => SelectRoomRate(event)}>
+                                    <Form.Select id="RoomNoInput" onChange={(event) => SelectRoom(event)}>
                                         <option value="Select Room">Select Room</option>
                                         {
                                             AvailableRooms !== "" ?

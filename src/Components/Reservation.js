@@ -12,7 +12,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
 import { ToastContainer, toast } from 'react-toastify';
-import { RoomListApi } from '../Server/DataApi';
 // import moment from 'moment';
 
 export default function Reservation() {
@@ -34,8 +33,7 @@ export default function Reservation() {
     const [CheckOut, setCheckOut] = useState(dayjs().startOf('day').format('YYYY-MM-DD'))
     const navigate = useNavigate()
     let RoomType = ""
-    // const RoomList = GetRoomList()
-    const RoomList = RoomListApi()
+    const RoomList = GetRoomList()
     // const RoomList = []
     const dispatch = useDispatch()
     const [Data, setData] = useState({
@@ -50,10 +48,10 @@ export default function Reservation() {
     const [Child, setChild] = useState(0)
     const [TotalPerson, setTotalPerson] = useState(0)
     const disabledDate1 = (current) => {
-        return current && current < dayjs().add(1, 'day').endOf('day');
+        return current && current < dayjs().endOf('day');
     };
     const disabledDate2 = (current) => {
-        return current && current < dayjs().add(2, 'day').endOf('day');
+        return current && current < dayjs().endOf('day');
     };
     const TotapDays = () => {
         var d1 = document.getElementById("d1").value
@@ -92,30 +90,17 @@ export default function Reservation() {
                     break
                 }
             }
-            if (HandleStayDays === 0) {
-                toast.info("please Add Some Days Before Selection of Room.", {
-                    position: "top-center",
-                    autoClose: 2500,
-                    theme: "dark",
-                });
-            }
         } else {
             dispatch(FindRoomsDispatch(CheckIn, CheckOut, RoomType))
             setSeltdRomTy("")
             setRate(0)
-            if (HandleStayDays === 0) {
-                toast.info("please Add Some Days Before Selection of Room.", {
-                    position: "top-center",
-                    autoClose: 2500,
-                    theme: "dark",
-                });
-            }
         }
     }
-    const SelectRoom = (event) => {
-
+    const SelectRoomRate = (event) => {
         if (event.target.value !== "Select Room") {
             setData({ ...Data, "roomno": Number(event.target.value) })
+        } else {
+
         }
     }
     useEffect(() => {
@@ -184,245 +169,245 @@ export default function Reservation() {
     }
     return (
         <>
-            <div className="abcdefgh">
-                <Container >
-                    <Form onSubmit={FinalSubmit} id="MainForm">
+        <div className="abcdefgh">
+            <Container >
+                <Form onSubmit={FinalSubmit} id="MainForm">
 
-                        {/* ---------------------Personal Detail------------------------------ */}
+                    {/* ---------------------Personal Detail------------------------------ */}
 
-                        <Row className="border border-2 border-warning rounded-1">
-                            <Col xs={12} className="text-center">
-                                <h3>Personal Detail</h3>
-                            </Col>
-                            <Col xs={12}>
-                                <Form.Group className="mb-1">
-                                    <Form.Label>Full Name</Form.Label>
-                                    <Form.Control className="iinput" required type="text" placeholder="Enter Name" onChange={(event) => { setData({ ...Data, "fname": event.target.value }) }} />
-                                </Form.Group>
-                            </Col>
-                            <Col xs={12}>
-                                <Form.Group className="mb-1">
-                                    <Form.Label>Address</Form.Label>
-                                    <Form.Control className="iinput" required type="text" placeholder="Enter Address" onChange={(event) => { setData({ ...Data, "address": event.target.value }) }} />
-                                </Form.Group>
-                            </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-1" controlId="formBasicEmail">
-                                    <Form.Label>Email address</Form.Label>
-                                    <Form.Control className="iinput" required type="email" placeholder="Enter email" onChange={(event) => { setData({ ...Data, "email": event.target.value }) }} />
-                                    <Form.Text className="text-muted">
-                                        We'll never share your email with anyone else.
-                                    </Form.Text>
-                                </Form.Group>
-                            </Col>
-                            <Col md={6}>
-                                <Form.Group className="mb-1">
-                                    <Form.Label>Telephone</Form.Label>
-                                    <Form.Control className="iinput" required type="number" placeholder="Mo. Number" id="number" onChange={(event) => { setData({ ...Data, "telephone": event.target.value }) }} />
-                                </Form.Group>
-                            </Col>
-                        </Row>
+                    <Row className="border border-2 border-warning rounded-1">
+                        <Col xs={12} className="text-center">
+                            <h3>Personal Detail</h3>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Group className="mb-1">
+                                <Form.Label>Full Name</Form.Label>
+                                <Form.Control className="iinput" required type="text" placeholder="Enter Name" onChange={(event) => { setData({ ...Data, "fname": event.target.value }) }} />
+                            </Form.Group>
+                        </Col>
+                        <Col xs={12}>
+                            <Form.Group className="mb-1">
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control className="iinput" required type="text" placeholder="Enter Address" onChange={(event) => { setData({ ...Data, "address": event.target.value }) }} />
+                            </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                            <Form.Group className="mb-1" controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control className="iinput" required type="email" placeholder="Enter email" onChange={(event) => { setData({ ...Data, "email": event.target.value }) }} />
+                                <Form.Text className="text-muted">
+                                    We'll never share your email with anyone else.
+                                </Form.Text>
+                            </Form.Group>
+                        </Col>
+                        <Col md={6}>
+                            <Form.Group className="mb-1">
+                                <Form.Label>Telephone</Form.Label>
+                                <Form.Control className="iinput" required type="number" placeholder="Mo. Number" id="number" onChange={(event) => { setData({ ...Data, "telephone": event.target.value }) }} />
+                            </Form.Group>
+                        </Col>
+                    </Row>
 
-                        {/* ---------------------Hotel Inventary------------------------------ */}
+                    {/* ---------------------Hotel Inventary------------------------------ */}
 
-                        <Row className="border border-2 border-warning rounded-1 mt-2">
-                            <Col xs={12} className="text-center">
-                                <h3>Hotel Inventary</h3>
-                            </Col>
+                    <Row className="border border-2 border-warning rounded-1 mt-2">
+                        <Col xs={12} className="text-center">
+                            <h3>Hotel Inventary</h3>
+                        </Col>
 
-                            <Col md={4}>
-                                <InputGroup className="mb-2">
-                                    <InputGroup.Text>Check In</InputGroup.Text>
-                                    <DatePicker
-                                        format="YYYY-MM-DD"
-                                        disabledDate={disabledDate1}
-                                        defaultValue={dayjs().startOf('day')}
-                                        // disabled
-                                        id="d1"
-                                        onChange={TotapDays}
-                                    />
-                                </InputGroup>
-                            </Col>
-                            <Col md={4}>
-                                <InputGroup className="mb-2">
-                                    <InputGroup.Text>Check Out</InputGroup.Text>
-                                    <DatePicker
-                                        format="YYYY-MM-DD"
-                                        disabledDate={disabledDate2}
-                                        defaultValue={dayjs().startOf('day')}
-                                        id="d2"
-                                        onChange={TotapDays}
-                                    />
-                                </InputGroup>
-                            </Col>
-                            <Col md={4}>
-                                <InputGroup className="mb-2">
-                                    <InputGroup.Text>Totap Days</InputGroup.Text>
-                                    <Form.Control type="number" value={HandleStayDays} disabled />
-                                </InputGroup>
-                            </Col>
-
-
-                            <Col md={4}>
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Total Adults</InputGroup.Text>
-                                    <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""}
-                                        onChange={(event) => {
-                                            if (event.target.value % 1 === 0 && event.target.value >= 0) {
-                                                setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) })
-                                            }
-                                        }} />
-                                </InputGroup>
-                            </Col>
-                            <Col md={4}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Total Children</InputGroup.Text>
-                                    <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""}
-                                        onChange={(event) => {
-                                            if (event.target.value % 1 === 0 && event.target.value >= 0) {
-                                                setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) })
-                                            }
-                                        }} />
-                                </InputGroup>
-                            </Col>
-                            <Col md={4}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Total Persons</InputGroup.Text>
-                                    <Form.Control type="number" disabled value={TotalPerson} />
-                                </InputGroup>
-                            </Col>
-
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Room Type</InputGroup.Text>
-                                    <Form.Select required onChange={(event) => SelectRoomType(event)}>
-                                        <option value="Select Room Type">Select Room Type</option>
-                                        {
-                                            RoomList.map((res, index) => {
-                                                return <option value={res.type}>{res.type}</option>
-                                            })
-                                        }
-                                    </Form.Select>
-                                </InputGroup>
-                            </Col>
-                            <Col md={6}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Facility</InputGroup.Text>
-                                    <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
-                                </InputGroup>
-                            </Col>
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Room No.</InputGroup.Text>
-                                    <Form.Select id="RoomNoInput" onChange={(event) => SelectRoom(event)}>
-                                        <option value="Select Room">Select Room</option>
-                                        {
-                                            AvailableRooms !== "" ?
-                                                (AvailableRooms.map((res, index) => {
-                                                    return <option value={res}>{res}</option>
-                                                })) : null
-                                        }
-                                    </Form.Select>
-                                </InputGroup>
-                            </Col>
+                        <Col md={4}>
+                            <InputGroup className="mb-2">
+                                <InputGroup.Text>Check In</InputGroup.Text>
+                                <DatePicker
+                                    format="YYYY-MM-DD"
+                                    disabledDate={disabledDate1}
+                                    defaultValue={dayjs().endOf('day')}
+                                    // disabled
+                                    id="d1"
+                                    onChange={TotapDays}
+                                />
+                            </InputGroup>
+                        </Col>
+                        <Col md={4}>
+                            <InputGroup className="mb-2">
+                                <InputGroup.Text>Check Out</InputGroup.Text>
+                                <DatePicker
+                                    format="YYYY-MM-DD"
+                                    disabledDate={disabledDate2}
+                                    defaultValue={dayjs().endOf('day')}
+                                    id="d2"
+                                    onChange={TotapDays}
+                                />
+                            </InputGroup>
+                        </Col>
+                        <Col md={4}>
+                            <InputGroup className="mb-2">
+                                <InputGroup.Text>Totap Days</InputGroup.Text>
+                                <Form.Control type="number" value={HandleStayDays} disabled />
+                            </InputGroup>
+                        </Col>
 
 
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Room Rate</InputGroup.Text>
-                                    <Form.Control type="number" value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": Number(event.target.value) }) }} />
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Tax</InputGroup.Text>
-                                    <Form.Control disabled type="number" value={(Number(Rate) * (0.09)).toFixed(2)} />
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Total</InputGroup.Text>
-                                    <Form.Control disabled type="number" value={(Number(Rate) + (Number(Rate) * 0.09)).toFixed(2)} />
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col md={3}>
-                                <InputGroup className="mb-1" >
-                                    <InputGroup.Text>Grand Total</InputGroup.Text>
-                                    <Form.Control disabled type="number" value={((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)} />
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                        </Row>
+                        <Col md={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Total Adults</InputGroup.Text>
+                                <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""} 
+                                onChange={(event) => {
+                                    if (event.target.value % 1 === 0 && event.target.value >= 0) {
+                                        setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) })
+                                    }
+                                }} />
+                            </InputGroup>
+                        </Col>
+                        <Col md={4}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Total Children</InputGroup.Text>
+                                <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""}
+                                onChange={(event) => {
+                                    if (event.target.value % 1 === 0 && event.target.value >= 0) {
+                                        setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) })
+                                    }
+                                }} />
+                            </InputGroup>
+                        </Col>
+                        <Col md={4}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Total Persons</InputGroup.Text>
+                                <Form.Control type="number" disabled value={TotalPerson} />
+                            </InputGroup>
+                        </Col>
 
-                        {/* ---------------------Account Section------------------------------ */}
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Type</InputGroup.Text>
+                                <Form.Select required onChange={(event) => SelectRoomType(event)}>
+                                    <option value="Select Room Type">Select Room Type</option>
+                                    {
+                                        RoomList.map((res, index) => {
+                                            return <option value={res.type}>{res.type}</option>
+                                        })
+                                    }
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
+                        <Col md={6}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Facility</InputGroup.Text>
+                                <Form.Control as="textarea" disabled value={SeltdRomTy.facility || ""} className="Facility" />
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room No.</InputGroup.Text>
+                                <Form.Select id="RoomNoInput" onChange={(event) => SelectRoomRate(event)}>
+                                    <option value="Select Room">Select Room</option>
+                                    {
+                                        AvailableRooms !== "" ?
+                                            (AvailableRooms.map((res, index) => {
+                                                return <option value={res}>{res}</option>
+                                            })) : null
+                                    }
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
 
-                        <Row className="border border-2 border-warning rounded-1 mt-2">
-                            <Col xs={12} className="text-center">
-                                <h3>Account Section</h3>
-                            </Col>
-                            <Col lg={4}>
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Total Amount</InputGroup.Text>
-                                    <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col lg={4}>
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Paid Amount</InputGroup.Text>
-                                    <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col lg={4}>
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Due Amount</InputGroup.Text>
-                                    <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col xs={12} className='bg-success pt-3'>
 
-                                {
-                                    Data.account.length > 0 ? <TableDisplay res={Data.account} /> : null
-                                }
-                            </Col>
-                            <Col lg={6} className="mt-2">
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Payment Method</InputGroup.Text>
-                                    <Form.Select id="SelectPaymentMethod" aria-label="Default select example" onChange={(event) => { setPaymentData({ ...PaymentData, "paymentmethod": event.target.value }) }}  >
-                                        <option value="none"></option>
-                                        <option value="Master Card">Master Card</option>
-                                        <option value="Visa Card">Visa Card</option>
-                                        <option value="Debit Card">Debit Card</option>
-                                        <option value="Cash">Cash</option>
-                                    </Form.Select>
-                                </InputGroup>
-                            </Col>
-                            <Col lg={4} className="mt-2">
-                                <InputGroup className="mb-1">
-                                    <InputGroup.Text>Amount</InputGroup.Text>
-                                    <Form.Control type="number" id="PaymentAmount" onChange={(event) => { setPaymentData({ ...PaymentData, "amount": Number(event.target.value) }) }} />
-                                    <InputGroup.Text> $</InputGroup.Text>
-                                </InputGroup>
-                            </Col>
-                            <Col lg={2} className="mt-2">
-                                <Button type="button" onClick={AddPayment} className="w-100" variant="outline-success">Add</Button>
-                            </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Room Rate</InputGroup.Text>
+                                <Form.Control type="number" value={Rate || ""} onChange={(event) => { setRate(event.target.value); setData({ ...Data, "rate": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Tax</InputGroup.Text>
+                                <Form.Control disabled type="number" value={(Number(Rate) * (0.09)).toFixed(2)} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Total</InputGroup.Text>
+                                <Form.Control disabled type="number" value={(Number(Rate) + (Number(Rate) * 0.09)).toFixed(2)} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col md={3}>
+                            <InputGroup className="mb-1" >
+                                <InputGroup.Text>Grand Total</InputGroup.Text>
+                                <Form.Control disabled type="number" value={((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                    </Row>
 
-                        </Row>
+                    {/* ---------------------Account Section------------------------------ */}
 
-                        <div className="mt-2 d-flex justify-content-center">
-                            <Button variant="warning" type="submit" className="SubmitButton" >
-                                Final Submit
-                            </Button>
-                        </div>
-                    </Form>
-                </Container>
-            </div>
+                    <Row className="border border-2 border-warning rounded-1 mt-2">
+                        <Col xs={12} className="text-center">
+                            <h3>Account Section</h3>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Total Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-warning" >{((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Paid Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-success text-white">{PaidAmount}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4}>
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Due Amount</InputGroup.Text>
+                                <InputGroup.Text className="fw-bold bg-danger text-white">{(((Number(Rate) + (Number(Rate) * 0.09)) * Number(HandleStayDays)) - (Number(PaidAmount))).toFixed(2)}</InputGroup.Text>
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col xs={12} className='bg-success pt-3'>
+
+                            {
+                                Data.account.length > 0 ? <TableDisplay res={Data.account} /> : null
+                            }
+                        </Col>
+                        <Col lg={6} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Payment Method</InputGroup.Text>
+                                <Form.Select id="SelectPaymentMethod" aria-label="Default select example" onChange={(event) => { setPaymentData({ ...PaymentData, "paymentmethod": event.target.value }) }}  >
+                                    <option value="none"></option>
+                                    <option value="Master Card">Master Card</option>
+                                    <option value="Visa Card">Visa Card</option>
+                                    <option value="Debit Card">Debit Card</option>
+                                    <option value="Cash">Cash</option>
+                                </Form.Select>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={4} className="mt-2">
+                            <InputGroup className="mb-1">
+                                <InputGroup.Text>Amount</InputGroup.Text>
+                                <Form.Control type="number" id="PaymentAmount" onChange={(event) => { setPaymentData({ ...PaymentData, "amount": Number(event.target.value) }) }} />
+                                <InputGroup.Text> $</InputGroup.Text>
+                            </InputGroup>
+                        </Col>
+                        <Col lg={2} className="mt-2">
+                            <Button type="button" onClick={AddPayment} className="w-100" variant="outline-success">Add</Button>
+                        </Col>
+
+                    </Row>
+
+                    <div className="mt-2 d-flex justify-content-center">
+                        <Button variant="warning" type="submit" className="SubmitButton" >
+                            Final Submit
+                        </Button>
+                    </div>
+                </Form>
+            </Container>
+        </div>
             <ToastContainer />
             {/* <Container >
                 <Row>

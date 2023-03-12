@@ -11,12 +11,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { PostUsersDispatch } from '../Redux Folder/Dispatch'
 import { GetAdmins } from '../Server/Services'
 import { ToastContainer, toast } from 'react-toastify';
-import { AdminsApi } from '../Server/DataApi'
 
 export default function Loginn() {
-  // const Admins = GetAdmins()
-  let Admins = AdminsApi()
-  console.log(Admins)
+  const Admins = GetAdmins()
   const Users = useSelector((state) => state.UsersReduser)
   const dispatch = useDispatch()
   const nevigate = useNavigate()
