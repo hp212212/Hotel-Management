@@ -27,9 +27,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "predeploy":"npm run build",
     "deploy":"gh-pages -d build",
+    "start": "react-scripts start",
     "server": "json-server --watch ./src/Server/Data.json --port 5000",
     "build": "react-scripts build",
     "test": "react-scripts test",

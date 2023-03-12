@@ -114,9 +114,14 @@
           "paymentmethod": "Master Card",
           "amount": 205,
           "date": "2023-03-07"
+        },
+        {
+          "paymentmethod": "Debit Card",
+          "amount": 231,
+          "date": "2023-03-11"
         }
       ],
-      "status": "In House",
+      "status": "Check Out",
       "fname": "4 Hitesh",
       "staydays": 4,
       "adults": 2,
@@ -318,6 +323,31 @@
       "roomno": 116,
       "rate": 120,
       "id": 11
+    },
+    {
+      "UserName": "sp",
+      "checkin": "2023-03-11",
+      "checkout": "2023-03-15",
+      "account": [
+        {
+          "paymentmethod": "Visa Card",
+          "amount": 200,
+          "date": "2023-03-11"
+        }
+      ],
+      "status": "In House",
+      "fname": "Hitesh",
+      "address": "5018 1 Avenue",
+      "telephone": "5879260819",
+      "email": "hp212212@gmail.com",
+      "staydays": 4,
+      "adults": 2,
+      "childs": 1,
+      "roomtype": "NQQ1",
+      "roomfacility": "2 Queen Beds, free Wi-Fi, free Breakfast, Free Parking, Pets Friendly, Restaurant, Bar, Vlt, Fridge, Coffee Maker, Full Hd T.V.",
+      "roomno": 127,
+      "rate": 100,
+      "id": 12
     }
   ],
   "RoomList": [
@@ -512,6 +542,13 @@
       "useremail": "hpph212212@gmail.com",
       "userpass": "123",
       "id": 4
+    },
+    {
+      "fname": "Yogeshbhai",
+      "username": "y",
+      "useremail": "yogeshbhai@gmail.com",
+      "userpass": "123",
+      "id": 5
     }
   ]
 }

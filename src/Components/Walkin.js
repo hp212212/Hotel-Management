@@ -235,13 +235,23 @@ export default function Walkin() {
                             <Col lg={4}>
                                 <InputGroup className="mb-1">
                                     <InputGroup.Text>Total Adults</InputGroup.Text>
-                                    <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""} onChange={(event) => { setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) }) }} />
+                                    <Form.Control type="number" pattern="[0-9]" id="TotalAdults" required value={Adults || ""} 
+                                    onChange={(event) => {
+                                        if (event.target.value % 1 === 0 && event.target.value >= 0) {
+                                            setAdults(event.target.value); setData({ ...Data, "adults": Number(event.target.value) })
+                                        }
+                                    }} />
                                 </InputGroup>
                             </Col>
                             <Col lg={4}>
                                 <InputGroup className="mb-1" >
                                     <InputGroup.Text>Total Children</InputGroup.Text>
-                                    <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} onChange={(event) => { setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) }) }} />
+                                    <Form.Control type="number" pattern="[0-9]" id="TotalChild" required value={Child || ""} 
+                                    onChange={(event) => {
+                                        if (event.target.value % 1 === 0 && event.target.value >= 0) {
+                                            setChild(event.target.value); setData({ ...Data, "childs": Number(event.target.value) })
+                                        }
+                                    }} />
                                 </InputGroup>
                             </Col>
                             <Col lg={4}>
