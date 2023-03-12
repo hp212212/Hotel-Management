@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
 import { ToastContainer, toast } from 'react-toastify';
-import { RoomListApi } from '../Server/Data';
+import { RoomListApi } from '../Server/DataApi';
 // import moment from 'moment';
 
 export default function Walkin() {

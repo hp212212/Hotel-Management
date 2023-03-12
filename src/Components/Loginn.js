@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { PostUsersDispatch } from '../Redux Folder/Dispatch'
 import { GetAdmins } from '../Server/Services'
 import { ToastContainer, toast } from 'react-toastify';
-import { AdminsApi } from '../Server/Data'
+import { AdminsApi } from '../Server/DataApi'
 
 export default function Loginn() {
   // const Admins = GetAdmins()
