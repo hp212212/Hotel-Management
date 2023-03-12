@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/Hotel-Management/static/css/main.7459ef37.css",
-    "main.js": "/Hotel-Management/static/js/main.ab346b31.js",
+    "main.js": "/Hotel-Management/static/js/main.2c832b1e.js",
     "static/js/461.3aeb69a9.chunk.js": "/Hotel-Management/static/js/461.3aeb69a9.chunk.js",
-    "static/js/726.da6d0374.chunk.js": "/Hotel-Management/static/js/726.da6d0374.chunk.js",
+    "static/js/726.6018403b.chunk.js": "/Hotel-Management/static/js/726.6018403b.chunk.js",
     "static/js/276.29342c86.chunk.js": "/Hotel-Management/static/js/276.29342c86.chunk.js",
     "static/media/background.jpg": "/Hotel-Management/static/media/background.6d6cec5eb36db57b8f08.jpg",
     "index.html": "/Hotel-Management/index.html",
     "main.7459ef37.css.map": "/Hotel-Management/static/css/main.7459ef37.css.map",
-    "main.ab346b31.js.map": "/Hotel-Management/static/js/main.ab346b31.js.map",
+    "main.2c832b1e.js.map": "/Hotel-Management/static/js/main.2c832b1e.js.map",
     "461.3aeb69a9.chunk.js.map": "/Hotel-Management/static/js/461.3aeb69a9.chunk.js.map",
-    "726.da6d0374.chunk.js.map": "/Hotel-Management/static/js/726.da6d0374.chunk.js.map",
+    "726.6018403b.chunk.js.map": "/Hotel-Management/static/js/726.6018403b.chunk.js.map",
     "276.29342c86.chunk.js.map": "/Hotel-Management/static/js/276.29342c86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7459ef37.css",
-    "static/js/main.ab346b31.js"
+    "static/js/main.2c832b1e.js"
   ]
 }
