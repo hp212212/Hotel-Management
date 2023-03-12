@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FindRoomsDispatch, PostDispatch } from '../Redux Folder/Dispatch';
 import TableDisplay from './TableDisplay';
 import { ToastContainer, toast } from 'react-toastify';
+import { RoomListApi } from '../Server/Data';
 // import moment from 'moment';
 
 export default function Walkin() {
@@ -23,7 +24,8 @@ export default function Walkin() {
     const navigate = useNavigate()
     let RoomType = ""
     // const RoomList = []
-    const RoomList = GetRoomList()
+    // const RoomList = GetRoomList()
+    const RoomList = RoomListApi()
     const dispatch = useDispatch()
     const [Data, setData] = useState({ "checkin": CheckIn, "checkout": CheckOut, "account": [], "status": "In House" })
     const [SeltdRomTy, setSeltdRomTy] = useState("")
@@ -72,13 +74,27 @@ export default function Walkin() {
                     break
                 }
             }
+            if (HandleStayDays === 0) {
+                toast.info("please Add Some Days Before Selection of Room.", {
+                    position: "top-center",
+                    autoClose: 2500,
+                    theme: "dark",
+                });
+            }
         } else {
             dispatch(FindRoomsDispatch(CheckIn, CheckOut, event.target.value))
             setSeltdRomTy("")
             setRate(0)
+            if (HandleStayDays === 0) {
+                toast.info("please Add Some Days Before Selection of Room.", {
+                    position: "top-center",
+                    autoClose: 2500,
+                    theme: "dark",
+                });
+            }
         }
     }
-    const SelectRoomRate = (event) => {
+    const SelectRoom = (event) => {
         if (event.target.value !== "Select Room") {
             setData({ ...Data, "roomno": Number(event.target.value) })
         }
@@ -282,7 +298,7 @@ export default function Walkin() {
                             </Col>
                             <Col lg={3}><InputGroup className="mb-1" >
                                 <InputGroup.Text>Room No.</InputGroup.Text>
-                                <Form.Select id="RoomNoInput" onChange={(event) => SelectRoomRate(event)}>
+                                <Form.Select id="RoomNoInput" onChange={(event) => SelectRoom(event)}>
                                     <option value="Select Room">Select Room</option>
                                     {
                                         AvailableRooms !== "" ?

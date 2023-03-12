@@ -13,6 +13,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaEdit } from 'react-icons/fa'
 import TableDisplay from './TableDisplay';
 import { ToastContainer, toast } from 'react-toastify';
+import { RoomListApi } from '../Server/Data';
 // import moment from 'moment';
 
 export default function Inhouse() {
@@ -37,7 +38,8 @@ export default function Inhouse() {
     const [CheckIn, setCheckIn] = useState(Reservation.checkin)
     const [CheckOut, setCheckOut] = useState(Reservation.checkout)
     const [ReservedRoom, setReservedRoom] = useState(Reservation.roomno)
-    const RoomList = GetRoomList()
+    // const RoomList = GetRoomList()
+    const RoomList=RoomListApi()
     // const RoomList = []
     const [PaidAmount, setPaidAmount] = useState(EarlyPaidAmount)
     const [PaymentData, setPaymentData] = useState({})
